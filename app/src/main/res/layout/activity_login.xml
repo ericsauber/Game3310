@@ -85,7 +85,7 @@
         android:layout_marginBottom="23dp"
         android:layout_marginRight="42dp"
         android:text="skip"
-        android:onClick="skip"
+        android:onClick="gotoMain"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

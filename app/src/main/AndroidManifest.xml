@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main"></activity>
+        <activity android:name=".Main" />
+        <activity android:name=".DatabaseTest"></activity>
     </application>
 
 </manifest>
