@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tutorial"
+        android:onClick="gotoTutorial1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -38,7 +39,8 @@
         android:onClick="gotoLevel1a"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Main_tutorial" />
+        app:layout_constraintTop_toBottomOf="@+id/Main_tutorial"
+        app:layout_constraintHorizontal_bias="0.501" />
 
     <Button
         android:id="@+id/Main_databasetest"
