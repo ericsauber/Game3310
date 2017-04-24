@@ -23,6 +23,7 @@ public class Level3b extends AppCompatActivity {
     int zB=0;
     EditText ed;
     Button button;
+    TextView pattern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,9 @@ public class Level3b extends AppCompatActivity {
 
         if (num[x] == bt) {
             if (zB == 0) {
+
+                pattern = (TextView) findViewById(R.id.Level3b_text1);
+                pattern.setText("");
                 zB++;
             }
             else if (error >= 2) {

@@ -90,15 +90,15 @@
         app:layout_constraintVertical_bias="0.498" />
 
     <TextView
-        android:id="@+id/textView24"
-        android:layout_width="330dp"
-        android:layout_height="25dp"
+        android:id="@+id/Level2d_text1"
+        android:layout_width="315dp"
+        android:layout_height="29dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="31dp"
-        android:text="Type the Sequence: ( 10 , 11 , 12 ... )"
+        android:text="Finish the Sequence: ( 7 , 8 , 9 ... )"
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

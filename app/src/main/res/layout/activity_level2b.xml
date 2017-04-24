@@ -91,16 +91,16 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="307dp"
-        android:layout_height="26dp"
+        android:layout_width="338dp"
+        android:layout_height="29dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="31dp"
-        android:text="Type the Sequence: ( 10 , 9 , 8 ... )"
+        android:text="Finish the Sequence: ( 13 , 12 , 11 ... )"
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        app:layout_constraintHorizontal_bias="0.295"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.297" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

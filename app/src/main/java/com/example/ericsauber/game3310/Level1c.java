@@ -32,11 +32,11 @@ public class Level1c extends AppCompatActivity {
         round = (TextView) findViewById(R.id.Level1c_progress);
         round.setText("0/5 Score: " + score);
         x=0;
-        arr[0]= "5";
-        arr[1]= "6";
-        arr[2]= "7";
-        arr[3]= "8";
-        arr[4]= "9";
+        arr[0]= "4";
+        arr[1]= "5";
+        arr[2]= "6";
+        arr[3]= "7";
+        arr[4]= "8";
     }
     public void button(View view)
     {

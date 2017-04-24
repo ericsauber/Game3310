@@ -71,7 +71,7 @@ public class Tutorial10 extends AppCompatActivity {
             if (arr[x].equals(letter)) {
                 if(x==1)
                 {
-                    pattern = (TextView) findViewById(R.id.textView18);
+                    pattern = (TextView) findViewById(R.id.Level3b_text1);
                     pattern.setText("Now see if you still remember the pattern.");
                 }
                 score = score + 25;

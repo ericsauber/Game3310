@@ -21,6 +21,7 @@ public class Level2d extends AppCompatActivity {
     int z=0;
     EditText ed;
     Button button;
+    TextView pattern;
 
 
 
@@ -48,6 +49,15 @@ public class Level2d extends AppCompatActivity {
         if(arr[x].equals(letter)) {
             score = score + 10;
             x++;
+
+            if (x == 1) {
+
+                pattern = (TextView) findViewById(R.id.Level2d_text1);
+                pattern.setText("");
+
+            }
+
+
             y++;
 
             if (x == 5) {
