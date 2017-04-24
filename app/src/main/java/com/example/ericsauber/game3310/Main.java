@@ -21,7 +21,7 @@ public class Main extends AppCompatActivity {
 
     public void gotoLevel1a(View view) {
 
-        Intent intent = new Intent(this, Level1b.class);
+        Intent intent = new Intent(this, Level1a.class);
         startActivity(intent);
     }
 
