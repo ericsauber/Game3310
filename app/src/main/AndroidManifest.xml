@@ -54,7 +54,8 @@
         <activity android:name=".Level3f" />
         <activity android:name=".Level3g" />
         <activity android:name=".Level3h" />
-        <activity android:name=".Registration"></activity>
+        <activity android:name=".Registration" />
+        <activity android:name=".Level3i"></activity>
     </application>
 
 </manifest>

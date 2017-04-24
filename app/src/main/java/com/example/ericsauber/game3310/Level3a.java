@@ -13,9 +13,9 @@ public class Level3a extends AppCompatActivity {
         setContentView(R.layout.activity_level3a);
     }
 
-    public void gotoLevel1b(View view) {
+    public void gotoLevel3b(View view) {
 
-        Intent intent = new Intent(this, Level1b.class);
+        Intent intent = new Intent(this, Level3b.class);
         startActivity(intent);
     }
 }

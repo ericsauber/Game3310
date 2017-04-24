@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="next"
+        android:onClick="gotoLevel2b"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
