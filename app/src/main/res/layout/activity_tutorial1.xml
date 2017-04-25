@@ -6,4 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.example.ericsauber.game3310.Tutorial1">
 
+    <TextView
+        android:id="@+id/Tutorial1_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="111dp"
+        android:text="HOW TO PLAY"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="280dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="95dp"
+        android:text="In the next few screens, we will ask you to count up or down from a certain starting value. Sounds easy right?"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tutorial1_text1" />
+
+    <Button
+        android:id="@+id/Tutorial1_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="next"
+        android:onClick="gotoTutorial2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
