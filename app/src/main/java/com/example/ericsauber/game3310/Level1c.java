@@ -27,11 +27,12 @@ public class Level1c extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1c);
-        Intent extras = getIntent();
-        score = extras.getIntExtra("score", 1);
         round = (TextView) findViewById(R.id.Level1c_progress);
         round.setText("0/5 Score: " + score);
+        error=0;
         x=0;
+        Intent extras = getIntent();
+        score = extras.getIntExtra("score", 1);
         arr[0]= "4";
         arr[1]= "5";
         arr[2]= "6";
@@ -59,7 +60,7 @@ public class Level1c extends AppCompatActivity {
             //acc.setText("Correct!");
 
         }else if (error == 2) {
-            Intent intent = new Intent(this, Level1f.class);
+            Intent intent = new Intent(this, Level1c.class);
             intent.putExtra("score", score);
             startActivity(intent);
             finish();
