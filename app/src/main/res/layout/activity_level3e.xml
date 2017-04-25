@@ -33,6 +33,7 @@
         android:layout_width="36dp"
         android:layout_height="46dp"
         android:ems="10"
+        android:onClick="gotoLevel3f"
         android:inputType="textPersonName"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="235dp"

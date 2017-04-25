@@ -20,9 +20,10 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
+        android:layout_width="132dp"
+        android:layout_height="46dp"
         android:layout_marginTop="8dp"
+        android:onClick="gotoLevel2f"
         android:ems="10"
         android:hint="X = ?"
         android:inputType="textPersonName"
