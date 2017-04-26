@@ -6,16 +6,20 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Level3c extends AppCompatActivity {
-
+int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3c);
+        Intent extras = getIntent();
+        score = extras.getIntExtra("score", 1);
     }
+
 
     public void gotoLevel3d(View view) {
 
         Intent intent = new Intent(this, Level3d.class);
+        intent.putExtra("score", score);
         startActivity(intent);
     }
 }
