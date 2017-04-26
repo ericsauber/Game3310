@@ -17,22 +17,29 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("sqlite-db-1.db",MODE_PRIVATE,null);
-        String sql = "CREATE TABLE contacts(name TEXT, phone INTEGER);";
-        Log.d(TAG, "onCreate: sql is " + sql);
 
+        String sql = "DROP TABLE IF EXISTS Contacts";
+        Log.d(TAG, "onCreate: sql = " + sql);
+        sqLiteDatabase.execSQL(sql);
+        sql = "CREATE TABLE IF NOT EXISTS contacts(name TEXT, phone INTEGER);";
+        Log.d(TAG, "onCreate: sql is " + sql);
         sqLiteDatabase.execSQL(sql);
 
         sql= "INSERT INTO contacts VALUES('nohemi','1234567890');";
+        Log.d(TAG, "onCreate: sql is " + sql);
         sqLiteDatabase.execSQL(sql);
         sql = "INSERT INTO contacts VALUES('test','213233333');";
+        Log.d(TAG, "onCreate: sql is " + sql);
         sqLiteDatabase.execSQL(sql);
 
 
         Cursor query = sqLiteDatabase.rawQuery("SELECT * FROM contacts",null);
         if(query .moveToFirst()){
-            String name = query.getString(0);
-            int phone = query.getInt(1);
-            Toast.makeText(this, "Name = " +name + " phone = " + phone, Toast.LENGTH_LONG).show();
+            do{
+                String name = query.getString(0);
+                int phone = query.getInt(1);
+                Toast.makeText(this, "Name = " +name + " phone = " + phone, Toast.LENGTH_LONG).show();
+            }while(query.moveToNext());
 
         }
         query.close();
