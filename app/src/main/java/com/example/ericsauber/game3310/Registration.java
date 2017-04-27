@@ -44,7 +44,7 @@ public class Registration extends AppCompatActivity {
 
         Contact contact = new Contact();
         contact.setName(userInput.getText().toString());
-        contact.setPassword(passwordInput.toString());
+        contact.setPassword(passwordInput.getText().toString());
 
         dbHandler.addContact(contact);
         printDatabase();

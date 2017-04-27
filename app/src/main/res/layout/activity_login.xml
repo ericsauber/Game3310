@@ -66,7 +66,7 @@
         android:layout_height="33dp"
         android:layout_marginTop="9dp"
         android:background="#000000"
-        android:onClick="verifyLogin"
+        android:onClick="loginButtonClicked"
         android:text="login"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintLeft_toLeftOf="parent"

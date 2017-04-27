@@ -39,16 +39,13 @@ public class MyDBHandler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    //Add a new row to the database
+    //Add a new row of username to the database
     public void addContact(Contact contacts){
-      // SQLiteDatabase db = getWritableDatabase();
-//
-//        String query = "select * from contracts";
-//        Cursor cursor = db.rawQuery(query, null);
-//        int count = cursor.getCount();
-
-
         ContentValues values = new ContentValues();
+        String newname=contacts.getName();
+        //boolean found = searchName(newname);
+        //if()
+
         values.put(COLUMN_NAME, contacts.getName());
         values.put(COLUMN_PASSWORD, contacts.getPassword());
        // values.put(COLUMN_ID,count);
@@ -56,6 +53,9 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+//    public boolean searchName(String newname){
+//
+//    }
 
     //Delete a product from the database
     public void deleteProduct(String name){
@@ -90,30 +90,72 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
 
     public String searchPass(String uname){
-        SQLiteDatabase db = getReadableDatabase();
-        String query = "select uname, pass from "+TABLE_NAME;
-        Cursor cursor = db.rawQuery(query,null);
-        String n, p= "not found";
-        if(cursor.moveToFirst())
-        {
-            do{
-                n = cursor.getString(0);
-                if(n.equals(uname))
-                {
-                    p = cursor.getString(1);
-                    break;
-
-                }
-
-            }while(cursor.moveToNext());
-
-
-
-        }
-        return p;
-
-
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT password FROM " + TABLE_NAME + " WHERE  username= '"+uname+"'";
+        return query;
+//        Cursor recordSet = db.rawQuery(query, null);
+//        String dbString = "";
+//        String n, p= "not found";
+//        int index = recordSet.getColumnIndex("name");
+//        p= recordSet.getString(recordSet.getColumnIndex("password"));
+//        return p;
+//  while (!recordSet.isAfterLast()) {
+//            // null could happen if we used our empty constructor
+//            dbString="";
+//            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
+//                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
+//                dbString += "\n";
+//
+//            }
+//            recordSet.moveToNext();
+//        }
+//        db.close();
+//        return dbString;
+        //Cursor recordSet = db.rawQuery(query, null);
+       // String dbString = "";
+      //  String n, p= "not found";
+//
+//        while (!recordSet.isAfterLast()) {
+//            // null could happen if we used our empty constructor
+//            dbString="";
+//            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
+//                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
+//                dbString += "\n";
+//
+//            }
+//            recordSet.moveToNext();
+//        }
+//        db.close();
+//        return dbString;
+//    }
     }
+//        while (!recordSet.isAfterLast()) {
+//
+//               // n = recordSet.getString(0);
+//            dbString="";
+//           // if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
+//            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
+//                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
+//                dbString += "\n";
+//                if(dbString.equals(uname)){
+//                    p += recordSet.getString(recordSet.getColumnIndex("password"));
+//                    db.close();
+//                    return p;
+//                }
+//
+//            }
+//            recordSet.moveToNext();
+//
+//        }
+
+
+        //p= "not found";
+//
+//        db.close();
+//        return p;
+//
+//
+//    }
 
 }
 
