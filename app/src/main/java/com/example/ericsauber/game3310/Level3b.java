@@ -34,16 +34,16 @@ public class Level3b extends AppCompatActivity {
         round = (TextView) findViewById(R.id.Level3b_progress);
         round.setText("0/5 Score: " + score);
         x=0;
-        arr[0]= "A";
-        arr[1]= "B";
-        arr[2]= "C";
-        arr[3]= "D";
-        arr[4]= "E";
-        num[0]= 1;
-        num[1]= 2;
-        num[2]= 3;
-        num[3]= 4;
-        num[4]= 5;
+        arr[0]= "C";
+        arr[1]= "D";
+        arr[2]= "E";
+        arr[3]= "F";
+        arr[4]= "G";
+        num[0]= 3;
+        num[1]= 4;
+        num[2]= 5;
+        num[3]= 6;
+        num[4]= 7;
     }
     public void buttonL(View view)
     {

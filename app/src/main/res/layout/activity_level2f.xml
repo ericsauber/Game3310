@@ -6,40 +6,44 @@
     android:layout_height="match_parent"
     tools:context="com.example.ericsauber.game3310.Level2f">
 
-    <TextView
-        android:id="@+id/textView32"
+    <ImageView
+        android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:text="LEVEL 2 COMPLETED"
-        android:textSize="30sp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mmlevel2" />
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="283dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="54dp"
+        android:layout_width="261dp"
+        android:layout_height="44dp"
         android:text="We're going to have to try a little harder to stump you huh?"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView32"
-        tools:layout_editor_absoluteX="101dp"
-        app:layout_constraintHorizontal_bias="0.521" />
+        app:layout_constraintHorizontal_bias="0.504"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView34" />
 
     <TextView
         android:id="@+id/textView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:text="Time : xxxxx"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+        app:layout_constraintTop_toTopOf="@+id/imageView12"
+        android:layout_marginTop="307dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView35"
@@ -47,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:text="Score : xxxxx"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView34" />
@@ -56,10 +60,11 @@
         android:id="@+id/button23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
         android:text="next"
         android:onClick="gotoLevel3a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

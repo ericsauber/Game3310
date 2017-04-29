@@ -6,12 +6,25 @@
     android:layout_height="match_parent"
     tools:context="com.example.ericsauber.game3310.Level3e">
 
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mmscreen3" />
+
     <TextView
         android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="269dp"
         android:text="1   4   7   10"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,12 +34,13 @@
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="93dp"
+        android:layout_marginTop="197dp"
         android:text="Fill in the blank"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <EditText
         android:id="@+id/editText2"
@@ -36,7 +50,7 @@
         android:onClick="gotoLevel3f"
         android:inputType="textPersonName"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="235dp"
+        android:layout_marginTop="260dp"
         app:layout_constraintLeft_toRightOf="@+id/textView41"
         android:layout_marginLeft="12dp" />
 
@@ -47,7 +61,7 @@
         android:text="16"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="269dp"
         app:layout_constraintLeft_toRightOf="@+id/editText2"
         android:layout_marginLeft="10dp" />
 
@@ -61,4 +75,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp" />
+
 </android.support.constraint.ConstraintLayout>

@@ -6,32 +6,46 @@
     android:layout_height="match_parent"
     tools:context="com.example.ericsauber.game3310.Level2e">
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mmscreen3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="200dp"
         android:text="What is X?"
-        android:textSize="30sp"
-        app:layout_constraintHorizontal_bias="0.501"
+        android:textSize="36sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="132dp"
-        android:layout_height="46dp"
+        android:layout_width="78dp"
+        android:layout_height="55dp"
         android:layout_marginTop="8dp"
-        android:onClick="gotoLevel2f"
         android:ems="10"
         android:hint="X = ?"
         android:inputType="textPersonName"
+        android:onClick="gotoLevel2f"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31"
-        app:layout_constraintVertical_bias="0.281" />
+        app:layout_constraintVertical_bias="0.197" />
 
     <Button
         android:id="@+id/button22"
@@ -43,4 +57,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
