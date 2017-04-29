@@ -27,8 +27,8 @@ public class MyDBHandler extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_NAME + " TEXT, " + COLUMN_PASSWORD + " TEXT" +
+                COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                COLUMN_NAME + " TEXT NOT NULL, " + COLUMN_PASSWORD + " TEXT NOT NULL" +
                 ");";
         db.execSQL(query);
     }
@@ -41,8 +41,9 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
     //Add a new row of username to the database
     public void addContact(Contact contacts){
+
         ContentValues values = new ContentValues();
-        String newname=contacts.getName();
+        //String newname=contacts.getName();
         //boolean found = searchName(newname);
         //if()
 
@@ -90,72 +91,17 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
 
     public String searchPass(String uname){
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT password FROM " + TABLE_NAME + " WHERE  username= '"+uname+"'";
-        return query;
-//        Cursor recordSet = db.rawQuery(query, null);
-//        String dbString = "";
-//        String n, p= "not found";
-//        int index = recordSet.getColumnIndex("name");
-//        p= recordSet.getString(recordSet.getColumnIndex("password"));
-//        return p;
-//  while (!recordSet.isAfterLast()) {
-//            // null could happen if we used our empty constructor
-//            dbString="";
-//            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
-//                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
-//                dbString += "\n";
-//
-//            }
-//            recordSet.moveToNext();
-//        }
-//        db.close();
-//        return dbString;
-        //Cursor recordSet = db.rawQuery(query, null);
-       // String dbString = "";
-      //  String n, p= "not found";
-//
-//        while (!recordSet.isAfterLast()) {
-//            // null could happen if we used our empty constructor
-//            dbString="";
-//            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
-//                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
-//                dbString += "\n";
-//
-//            }
-//            recordSet.moveToNext();
-//        }
-//        db.close();
-//        return dbString;
-//    }
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT password FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + "=\"" + uname + "\";";
+        String password="";
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        if (recordSet.moveToFirst()) {
+            password = recordSet.getString(recordSet.getColumnIndex("password"));
+        }
+        return password;
     }
-//        while (!recordSet.isAfterLast()) {
-//
-//               // n = recordSet.getString(0);
-//            dbString="";
-//           // if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
-//            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
-//                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
-//                dbString += "\n";
-//                if(dbString.equals(uname)){
-//                    p += recordSet.getString(recordSet.getColumnIndex("password"));
-//                    db.close();
-//                    return p;
-//                }
-//
-//            }
-//            recordSet.moveToNext();
-//
-//        }
 
-
-        //p= "not found";
-//
-//        db.close();
-//        return p;
-//
-//
-//    }
 
 }
 

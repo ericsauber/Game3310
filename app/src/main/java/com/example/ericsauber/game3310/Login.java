@@ -25,29 +25,7 @@ public class Login extends AppCompatActivity {
         dbHandler = new MyDBHandler(this, null, null, 1);
     }
 
-//        if(v.getId()==R.id.Login_login) {
-//            //public void onClick(View v){
-//
-//            String namestr = name.getText().toString();
-//
-//            String passwordstr = password.getText().toString();
-//
-//            String getpassword = MyDBHandler.searchPass(namestr);
-//            if (passwordstr.equals(getpassword)) {
-//                Intent i = new Intent(Login.this, Display.class);
-//                i.putExtra("Username", namestr);
-//                startActivity(i);
-//            } else {
-//                //popup messsage passwords do not match
-//                Toast pass = Toast.makeText(Login.this, "Username and Passwords don't match!", Toast.LENGTH_SHORT);
-//                pass.show();
-//
-//            }
-//        }
-//
-//
-//
-//    }
+
     public void loginButtonClicked(View view){
         String namestr = userInput.getText().toString();
         String passwordstr = passwordInput.getText().toString();
@@ -65,11 +43,8 @@ public class Login extends AppCompatActivity {
                 pass.show();
                 userInput.setText("");
                 passwordInput.setText("");
-
             }
-
     }
-
 
     public void gotoMain(View view) {
 

@@ -1,10 +1,12 @@
 package com.example.ericsauber.game3310;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
     EditText userInput,passwordInput,password2Input;
@@ -31,26 +33,64 @@ public class Registration extends AppCompatActivity {
     //Print the database
     public void printDatabase(){
         String dbString = dbHandler.databaseToString();
+        String created = "Welcome ";
+        dbString = created +dbString;
         recordsTextView.setText(dbString);
         userInput.setText("");
         passwordInput.setText("");
         password2Input.setText("");
+        Toast pass = Toast.makeText(Registration.this,"Username created!", Toast.LENGTH_SHORT);
+        pass.show();
+        recordsTextView.setText("");
+
     }
 
     //add your elements onclick methods.
     //Add a product to the database
     public void addButtonClicked(View view){
-        // dbHandler.add needs an object parameter.
 
-        Contact contact = new Contact();
-        contact.setName(userInput.getText().toString());
-        contact.setPassword(passwordInput.getText().toString());
+        //passwordInput.getText().toString().isEmpty()
+        if(passwordInput.getText().toString().equals("") || userInput.getText().toString().isEmpty()){
+            Toast pass = Toast.makeText(Registration.this,"ALL FIELDS MUST BE FILED OUT", Toast.LENGTH_SHORT);
+            pass.show();
 
-        dbHandler.addContact(contact);
-        printDatabase();
+        }
+        else if(!passwordInput.getText().toString().equals(password2Input.getText().toString())){
+                //popup messsage passwords do not match
+                Toast pass = Toast.makeText(Registration.this,"Passwords don't match!", Toast.LENGTH_SHORT);
+                pass.show();
+
+            passwordInput.setText("");
+            password2Input.setText("");
+            }
+        else{
+            String found = dbHandler.searchPass(userInput.getText().toString());
+            if(found == null || found == "") {
+
+                Contact contact = new Contact();
+                contact.setName(userInput.getText().toString());
+                contact.setPassword(passwordInput.getText().toString());
+
+                dbHandler.addContact(contact);
+                printDatabase();
+            }
+            else{
+                Toast pass = Toast.makeText(Registration.this,"Username already exists", Toast.LENGTH_SHORT);
+                pass.show();
+                userInput.setText("");
+                passwordInput.setText("");
+                password2Input.setText("");
+            }
+
+        }
+
+    }
+    public void gotoMain(View view) {
+
+        Intent intent = new Intent(this, Main.class);
+        startActivity(intent);
     }
 
-    //Delete items
 //    public void deleteButtonClicked(View view){
 //        // dbHandler delete needs string to find in the db
 //        String inputText = userInput.getText().toString();
@@ -83,20 +123,20 @@ public class Registration extends AppCompatActivity {
 //        regsignupbtn = (Button)findViewById(Registration_signup);
 //        AddData();
 //
-////        if(!passwordstr.equals(password2str)){
-////            //popup messsage passwords do not match
-////            Toast pass = Toast.makeText(Registration.this,"Passwords don't match!", Toast.LENGTH_SHORT);
-////            pass.show();
-////        }
-////
-////        else{
-////            //insert into database
-////            Contact c = new Contact();
-////            c.setName(namestr);
-////            c.setPassword(passwordstr);
-////
-////            //helper.insertContact();
-////        }
+//        if(!passwordstr.equals(password2str)){
+//            //popup messsage passwords do not match
+//            Toast pass = Toast.makeText(Registration.this,"Passwords don't match!", Toast.LENGTH_SHORT);
+//            pass.show();
+//        }
+//
+//        else{
+//            //insert into database
+//            Contact c = new Contact();
+//            c.setName(namestr);
+//            c.setPassword(passwordstr);
+//
+//            //helper.insertContact();
+//        }
 //
 //
 //    }
