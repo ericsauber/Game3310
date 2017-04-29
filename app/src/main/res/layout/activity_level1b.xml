@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.ericsauber.game3310.Level1b">
 
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
@@ -33,14 +32,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/Level1b_next"
+        android:id="@+id/button14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:onClick="gotoLevel1c"
         android:text="next"
+        android:onClick="gotoLevel1c"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

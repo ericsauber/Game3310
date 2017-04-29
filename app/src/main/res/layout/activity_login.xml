@@ -65,6 +65,7 @@
         android:layout_width="215dp"
         android:layout_height="33dp"
         android:background="#000000"
+        android:onClick="loginButtonClicked"
         android:text="login"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintLeft_toLeftOf="parent"

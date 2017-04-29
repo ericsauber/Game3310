@@ -136,7 +136,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="180dp"
-        android:text="( 1 , A , 2 , B ... )"
+        android:text="( 1 , B , 2 , C ... )"
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
