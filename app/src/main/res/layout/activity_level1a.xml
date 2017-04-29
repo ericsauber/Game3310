@@ -32,6 +32,8 @@
         android:id="@+id/textView20"
         android:layout_width="262dp"
         android:layout_height="100dp"
+        android:shadowColor="@color/text_shadow"
+
         android:text="Lets see how good you are at remembering things"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -28,6 +28,7 @@ public class Login extends AppCompatActivity {
         if (x == 0) {
             MediaPlayer ring = MediaPlayer.create(Login.this,R.raw.mmsong);
             ring.start();
+            ring.setLooping(true);
         }
 
         final EditText editText1 = (EditText) findViewById(R.id.Login_username);
