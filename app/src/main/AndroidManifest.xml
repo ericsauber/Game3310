@@ -24,7 +24,7 @@
         <activity android:name=".Main" />
         <activity android:name=".Contact" />
         <activity android:name=".MyDBHandler" />
-        <!--activity android:name=".DatabaseTest" -->
+        <!-- activity android:name=".DatabaseTest" -->
         <activity android:name=".Tutorial2" />
         <activity android:name=".Tutorial3" />
         <activity android:name=".Tutorial1" />
@@ -57,9 +57,10 @@
         <activity android:name=".Level3g" />
         <activity android:name=".Level3h" />
         <activity android:name=".Registration" />
-        <activity android:name=".activity_levelalg"/>
-        <activity android:name=".Highcore">
-        </activity>
+        <activity android:name=".activity_levelalg" />
+        <activity android:name=".Highcore" />
+        <activity android:name=".Wrong" />
+        <activity android:name=".GameOver"></activity>
     </application>
 
 </manifest>

@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Level1e extends AppCompatActivity {
-int score;
+    int score;
+    int lives;
+
 
     EditText typeText;
     @Override
@@ -16,6 +18,7 @@ int score;
         setContentView(R.layout.activity_level1e);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
 
 
 
@@ -28,11 +31,15 @@ int score;
         {
             Intent intent = new Intent(this, Level1f.class);
             intent.putExtra("score", score);
+            intent.putExtra("lives", lives);
             startActivity(intent);
         }
         else
         {
-            typeText.setHint("Type the Anwser");
+
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("lives", lives);
+            startActivity(intent);
         }
     }
 }

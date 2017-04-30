@@ -11,8 +11,10 @@ import android.widget.TextView;
 public class Level3g extends AppCompatActivity {
 
     int score=0;
+    int lives;
     Button b;
     TextView round;
+    int level = 3;
     TextView acc;
     int error=0;
     String arr[] = new String[5];
@@ -30,6 +32,7 @@ public class Level3g extends AppCompatActivity {
         setContentView(R.layout.activity_level3g);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
         round = (TextView) findViewById(R.id.Level3g_progress);
         round.setText("0/5 Score: " + score);
         x=0;
@@ -56,14 +59,13 @@ public class Level3g extends AppCompatActivity {
         if(zB==0)
         {
 
-            if (error == 2) {
-                Intent intent = new Intent(this, Level3g.class);
+
+                Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
+                intent.putExtra("lives", lives);
+                intent.putExtra("level", level);
                 startActivity(intent);
                 finish();
-            }
-            error++;
-            //acc.setText("Incorrect. Do the Number first. " + error + "/2 Mistakes used.");
 
 
         }
@@ -78,22 +80,19 @@ public class Level3g extends AppCompatActivity {
 
                     Intent intent = new Intent(this, Level3h.class);
                     intent.putExtra("score", score);
+                    intent.putExtra("lives", lives);
                     startActivity(intent);
                     finish();
                 }
             }
-            else if (error == 2) {
+            else {
 
-                Intent intent = new Intent(this, Level3g.class);
+                Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
+                intent.putExtra("lives", lives);
+                intent.putExtra("level", level);
                 startActivity(intent);
                 finish();
-            } else if (error == 1) {
-                //acc.setText("Incorrect! 2/2 Mistakes used.");
-                error++;
-            } else {
-                //acc.setText("Incorrect! 1/2 Mistakes used.");
-                error++;
             }
             round.setText(y + "/5" + " Score: " + score);
             //acc.setText("Correct!");
@@ -110,28 +109,25 @@ public class Level3g extends AppCompatActivity {
             if (zB == 0) {
                 zB++;
             }
-            else if (error >= 2) {
-                Intent intent = new Intent(this, Level3g.class);
+            else {
+                Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
+                intent.putExtra("level", level);
+                intent.putExtra("lives", lives);
                 startActivity(intent);
                 finish();
-            } else if (error >= 1) {
-                //acc.setText("Incorrect! 2/2 Mistakes used.");
-                error++;
-            } else {
-                //acc.setText("Incorrect! 1/2 Mistakes used.");
-                error++;
             }
         }
         else
         {
-            error++;
-            if (error >= 2) {
-                Intent intent = new Intent(this, Level3g.class);
+
+                Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
+                intent.putExtra("lives", lives);
+                intent.putExtra("level", level);
                 startActivity(intent);
                 finish();
-            }
+
             //acc.setText("Incorrect! Mistakes used" + error + "/2");
             if(zB!=0)
             {

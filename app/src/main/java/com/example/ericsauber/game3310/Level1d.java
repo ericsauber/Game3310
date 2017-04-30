@@ -7,6 +7,7 @@ import android.view.View;
 
 public class Level1d extends AppCompatActivity {
     int score;
+    int lives;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +15,7 @@ public class Level1d extends AppCompatActivity {
         setContentView(R.layout.activity_level1d);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
     }
 
     public void gotoLevel1e(View view) {
@@ -21,6 +23,7 @@ public class Level1d extends AppCompatActivity {
 
         Intent intent = new Intent(this, Level1e.class);
         intent.putExtra("score", score);
+        intent.putExtra("lives", lives);
         startActivity(intent);
     }
 }

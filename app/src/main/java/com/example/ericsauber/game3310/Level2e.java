@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Level2e extends AppCompatActivity {
-int score;
+    int score;
+    int lives;
+    int level = 2;
+
     EditText typeText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +18,7 @@ int score;
         setContentView(R.layout.activity_level2e);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
     }
 
     public void gotoLevel2f(View view) {
@@ -23,11 +27,15 @@ int score;
         if(word.equals("20")) {
             Intent intent = new Intent(this, Level2f.class);
             intent.putExtra("score", score);
+            intent.putExtra("lives", lives);
             startActivity(intent);
         }
         else
         {
-            typeText.setHint("Type the Answer");
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("lives", lives);
+            intent.putExtra("level", level);
+            startActivity(intent);
         }
     }
 }
