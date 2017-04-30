@@ -20,7 +20,6 @@ public class Level1d extends AppCompatActivity {
 
     public void gotoLevel1e(View view) {
 
-
         Intent intent = new Intent(this, Level1e.class);
         intent.putExtra("score", score);
         intent.putExtra("lives", lives);

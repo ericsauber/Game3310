@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Level3e extends AppCompatActivity {
+
     int score;
     int lives;
     int level = 3;
-
     EditText typeView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,16 +23,19 @@ public class Level3e extends AppCompatActivity {
     }
 
     public void gotoLevel3f(View view) {
-    typeView = (EditText) findViewById(R.id.editText2);
+
+        typeView = (EditText) findViewById(R.id.editText2);
         String word = typeView.getText().toString();
+
         if(word.equals("13")) {
+
             Intent intent = new Intent(this, Level3f.class);
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
             startActivity(intent);
         }
-        else
-        {
+        else {
+
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("score", score);
             intent.putExtra("level", level);

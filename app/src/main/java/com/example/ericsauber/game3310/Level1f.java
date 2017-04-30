@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class Level1f extends AppCompatActivity {
     int score;
     int lives;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

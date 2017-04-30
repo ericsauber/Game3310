@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Level3f extends AppCompatActivity {
+
     int score;
     int lives;
 

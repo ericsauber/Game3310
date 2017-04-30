@@ -11,6 +11,7 @@ public class Level3a extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3a);
         Intent extras = getIntent();

@@ -24,8 +24,6 @@ public class Level2b extends AppCompatActivity {
     EditText ed;
     Button button;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +40,12 @@ public class Level2b extends AppCompatActivity {
         arr[3]= "7";
         arr[4]= "6";
     }
-    public void button(View view)
-    {
+
+    public void button(View view) {
+
         b = (Button) view;
-        //round = (TextView) findViewById(R.id.Level1c_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
+
         if(arr[x].equals(letter)) {
             score = score + 10;
             x++;
@@ -60,18 +58,15 @@ public class Level2b extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-            round.setText(y+ "/5" + " Score: " + score);
-            //acc.setText("Correct!");
 
-        }else {
+            round.setText(y+ "/5" + " Score: " + score);
+        } else {
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("level", level);
             intent.putExtra("lives", lives);
             startActivity(intent);
             finish();
         }
-
-
     }
 
 

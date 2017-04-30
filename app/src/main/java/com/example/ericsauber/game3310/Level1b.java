@@ -19,7 +19,6 @@ public class Level1b extends AppCompatActivity {
 
     public void gotoLevel1c(View view) {
 
-
         Intent intent = new Intent(this, Level1c.class);
         intent.putExtra("lives", lives);
         startActivity(intent);

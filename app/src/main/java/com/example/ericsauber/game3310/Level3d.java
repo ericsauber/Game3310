@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Level3d extends AppCompatActivity {
+
     int score;
     int lives;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3d);
         Intent extras = getIntent();

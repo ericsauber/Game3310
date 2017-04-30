@@ -24,18 +24,12 @@ public class Level1c extends AppCompatActivity {
     EditText ed;
     Button button;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1c);
-        round = (TextView) findViewById(R.id.Level1c_progress);
-        round.setText("0/5 Score: " + score);
-
         Intent extras = getIntent();
         lives = extras.getIntExtra("lives",1);
-
         error=0;
         x=0;
 
@@ -49,8 +43,6 @@ public class Level1c extends AppCompatActivity {
     public void button(View view)
     {
         b = (Button) view;
-        //round = (TextView) findViewById(R.id.Level1c_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
         if(arr[x].equals(letter)) {
             score = score + 10;
@@ -64,8 +56,6 @@ public class Level1c extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-            round.setText(y+ "/5" + " Score: " + score);
-            //acc.setText("Correct!");
 
         } else {
 
@@ -75,14 +65,6 @@ public class Level1c extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-
-
     }
-
-
-
-
-
 }
 

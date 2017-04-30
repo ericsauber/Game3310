@@ -29,6 +29,7 @@ public class Level3b extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3b);
         Intent extras = getIntent();
@@ -48,43 +49,39 @@ public class Level3b extends AppCompatActivity {
         num[3]= 6;
         num[4]= 7;
     }
-    public void buttonL(View view)
-    {
+
+    public void buttonL(View view) {
+
         b = (Button) view;
-        round = (TextView) findViewById(R.id.Level3b_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
-        if(zB==0)
-        {
+        if(zB==0) {
 
-
-
-
-                Intent intent = new Intent(this, Wrong.class);
-                intent.putExtra("score", score);
-                intent.putExtra("lives", lives);
-                intent.putExtra("level", level);
-                startActivity(intent);
-                finish();
-
-
-
-
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("score", score);
+            intent.putExtra("lives", lives);
+            intent.putExtra("level", level);
+            startActivity(intent);
+            finish();
         }
         else {
+
             if (arr[x].equals(letter)) {
+
                 score = score + 20;
                 zB=0;
                 x++;
                 y++;
                 if (x == 5) {
+
                     Intent intent = new Intent(this, Level3c.class);
                     intent.putExtra("score", score);
                     intent.putExtra("lives", lives);
                     startActivity(intent);
                     finish();
                 }
-            } else {
+            }
+            else {
+
                 Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
                 intent.putExtra("lives", lives);
@@ -92,15 +89,12 @@ public class Level3b extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-            round.setText(y + "/5" + " Score: " + score);
-            //acc.setText("Correct!");
-
         }
     }
+
     public void buttonN(View view) {
+
         b = (Button) view;
-        round = (TextView) findViewById(R.id.Level3b_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         int bt = Integer.parseInt((String) b.getText());
 
         if (num[x] == bt) {
@@ -111,6 +105,7 @@ public class Level3b extends AppCompatActivity {
                 zB++;
             }
             else {
+
                 Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
                 intent.putExtra("level", level);
@@ -119,18 +114,14 @@ public class Level3b extends AppCompatActivity {
                 finish();
             }
         }
-        else
-        {
+        else {
 
-                Intent intent = new Intent(this, Wrong.class);
-                intent.putExtra("score", score);
-                intent.putExtra("lives", lives);
-                intent.putExtra("level", level);
-                startActivity(intent);
-                finish();
-
-
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("score", score);
+            intent.putExtra("lives", lives);
+            intent.putExtra("level", level);
+            startActivity(intent);
+            finish();
         }
     }
-
 }

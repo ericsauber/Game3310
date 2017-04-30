@@ -13,9 +13,9 @@ public class Tutorial9 extends AppCompatActivity {
         setContentView(R.layout.activity_tutorial9);
     }
 
-    public void gotoTutorial10(View view) {
+    public void gotoMain(View view) {
 
-        Intent intent = new Intent(this, Tutorial10.class);
+        Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
 }

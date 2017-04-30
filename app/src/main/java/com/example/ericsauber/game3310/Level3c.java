@@ -12,13 +12,13 @@ public class Level3c extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3c);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
         lives = extras.getIntExtra("lives", 1);
     }
-
 
     public void gotoLevel3d(View view) {
 

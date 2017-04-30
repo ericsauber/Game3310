@@ -60,7 +60,8 @@
         <activity android:name=".activity_levelalg" />
         <activity android:name=".Highcore" />
         <activity android:name=".Wrong" />
-        <activity android:name=".GameOver"></activity>
+        <activity android:name=".GameOver" />
+        <activity android:name=".Level3j"></activity>
     </application>
 
 </manifest>
