@@ -2,7 +2,6 @@ package com.example.ericsauber.game3310;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,21 +43,26 @@ public class Login extends AppCompatActivity {
     public void loginButtonClicked(View view){
         String namestr = userInput.getText().toString();
         String passwordstr = passwordInput.getText().toString();
-        String getpassword = dbHandler.searchPassWord(namestr);
+        if(!namestr.equals("")) {
+            String getpassword = dbHandler.searchPassWord(namestr);
 
-        Toast passw = Toast.makeText(this, " "+getpassword+" " +passwordstr+" ", Toast.LENGTH_SHORT);
-        passw.show();
-        if (passwordstr.equals(getpassword)) {
+            if (passwordstr.equals(getpassword)) {
                 Intent i = new Intent(this, Main.class);
-                //i.putExtra("Username", namestr);
                 startActivity(i);
             } else {
                 //popup messsage passwords do not match
-                Toast pass = Toast.makeText(this, "Username and Passwords don't match!", Toast.LENGTH_SHORT);
+                Toast pass = Toast.makeText(this, "Invalid user name or password!", Toast.LENGTH_LONG);
                 pass.show();
                 userInput.setText("");
                 passwordInput.setText("");
             }
+        }
+        else{
+            Toast pass = Toast.makeText(this, "Must provide a username and password", Toast.LENGTH_LONG);
+            pass.show();
+            userInput.setText("");
+            passwordInput.setText("");
+        }
     }
 
     public void gotoMain(View view) {
