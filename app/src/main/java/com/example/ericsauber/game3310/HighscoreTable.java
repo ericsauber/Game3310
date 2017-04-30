@@ -45,6 +45,7 @@ public class HighscoreTable extends AppCompatActivity {
 
             }
         }
+        recordSet.close();
 
     }
 //    public void displayResultsList(){

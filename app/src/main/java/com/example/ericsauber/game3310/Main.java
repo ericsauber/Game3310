@@ -41,6 +41,7 @@ public class Main extends AppCompatActivity {
 //        }
 //        query.close();
 //        sqLiteDatabase.close();
+        //
     }
 
     public void gotoHighscoreTable(View view) {
