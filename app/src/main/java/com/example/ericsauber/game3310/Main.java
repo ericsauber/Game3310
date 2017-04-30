@@ -4,13 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
+
+import static com.example.ericsauber.game3310.R.id.Main_playgame;
+import static com.example.ericsauber.game3310.R.id.button;
 
 public class Main extends AppCompatActivity {
     //private static final String TAG = "Main";
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+
 
 
        // SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("sqlite-db-1.db",MODE_PRIVATE,null);
@@ -42,6 +58,13 @@ public class Main extends AppCompatActivity {
 //        query.close();
 //        sqLiteDatabase.close();
         //
+
+
+
+
+
+
+
     }
 
     public void gotoHighscoreTable(View view) {
@@ -64,4 +87,8 @@ public class Main extends AppCompatActivity {
     }
 
 
+
+
 }
+
+
