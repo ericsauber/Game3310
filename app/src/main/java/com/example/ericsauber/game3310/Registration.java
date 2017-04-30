@@ -53,36 +53,33 @@ public class Registration extends AppCompatActivity {
         if(passwordInput.getText().toString().equals("") || userInput.getText().toString().isEmpty()){
             Toast pass = Toast.makeText(Registration.this,"ALL FIELDS MUST BE FILED OUT", Toast.LENGTH_SHORT);
             pass.show();
-
-        }
-        else if(!passwordInput.getText().toString().equals(password2Input.getText().toString())){
+        }else{
+            if(!passwordInput.getText().toString().equals(password2Input.getText().toString())){
                 //popup messsage passwords do not match
                 Toast pass = Toast.makeText(Registration.this,"Passwords don't match!", Toast.LENGTH_SHORT);
                 pass.show();
-
-            passwordInput.setText("");
-            password2Input.setText("");
-            }
-        else{
-            String found = dbHandler.searchPassWord(userInput.getText().toString());
-            if(found == null) {
-
-                Contact contact = new Contact();
-                contact.setName(userInput.getText().toString());
-                contact.setPassword(passwordInput.getText().toString());
-
-                dbHandler.addContact(contact);
-                printDatabase();
-            }
-            else{
-                Toast pass = Toast.makeText(Registration.this,"Username already exists", Toast.LENGTH_SHORT);
-                pass.show();
-                userInput.setText("");
                 passwordInput.setText("");
                 password2Input.setText("");
             }
+            else {
+                String found = dbHandler.searchPassWord(userInput.getText().toString());
+                if (found.equals("")) {
+                    Contact contact = new Contact();
+                    contact.setName(userInput.getText().toString());
+                    contact.setPassword(passwordInput.getText().toString());
+                    dbHandler.addContact(contact);
+                    printDatabase();
+                } else {
+                    Toast pass = Toast.makeText(Registration.this, "Username already exists", Toast.LENGTH_SHORT);
+                    pass.show();
+                    userInput.setText("");
+                    passwordInput.setText("");
+                    password2Input.setText("");
+                }
+            }
 
         }
+
 
     }
     public void gotoMain(View view) {

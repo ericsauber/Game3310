@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ericsauber.game3310.HighscoreTable"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/memmouse3"
+        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/DBtest_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highscores"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="71dp" />
+    <!--
+        <TextView
+            android:id="@+id/DBtest_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="** username **"
+            tools:layout_editor_absoluteY="132dp"
+            tools:layout_editor_absoluteX="145dp" />
+    -->
+
+        <Button
+            android:id="@+id/DBtest_mainmenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="gotoMain"
+            android:text="Main Menu"
+            tools:layout_editor_absoluteY="463dp"
+            tools:layout_editor_absoluteX="152dp" />
+
+<LinearLayout
+    android:layout_width="163dp"
+    android:layout_height="250dp"
+    tools:layout_editor_absoluteY="163dp"
+    tools:layout_editor_absoluteX="125dp">
+
+    <ListView
+        android:id="@+id/listView"
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="141dp" />
+</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

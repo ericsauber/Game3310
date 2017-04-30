@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * Created by nohemi on 4/25/17.
@@ -22,6 +25,8 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public static final String TABLE_HIGH = "high";
     public static final String COLUMN_HIID = "hi_id";
     public static final String COLUMN_HISCORE = "highscore";
+    ListView listview;
+
     //public static final String COLUMN_NAME = "userid";
 
 
@@ -190,8 +195,8 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public int getCountHighScore(int highscore){
         int count = 0;
 
-        SQLiteDatabase db = getWritableDatabase();
-        String query ="SELECT count(*) FROM " +TABLE_HIGH;
+        SQLiteDatabase db = getReadableDatabase();
+        String query ="SELECT count(*) FROM " + TABLE_HIGH+";";
         Cursor recordSet = db.rawQuery(query, null);
         if (recordSet.moveToFirst()) {
             count = recordSet.getInt(0);
@@ -200,6 +205,47 @@ public class MyDBHandler extends SQLiteOpenHelper{
         return count;
 
     }
+    public Cursor getCursor(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<String> listItems = new ArrayList<String>();
+//        String query = "SELECT * FROM " + TABLE_HIGH +";";
+//                ; //= "CREATE INDEX " +COLUMN_HISCORE + " ON (" + TABLE_HIGH +
+
+        String query = "SELECT " + COLUMN_NAME+ ", "+ COLUMN_HISCORE+ " FROM "+TABLE_HIGH+" ORDER BY " + COLUMN_HISCORE +
+                " DESC;";
+       Cursor recordSet = db.rawQuery(query, null);
+       // recordSet.moveToFirst();
+        return recordSet;
+
+    }
+    /*
+    public ArrayList<String> getHighList(){
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<String> listItems = new ArrayList<String>();
+        String query = "CREATE INDEX " +COLUMN_HISCORE + " ON (" + TABLE_HIGH +
+                ");";
+        db.execSQL(query);
+        Cursor recordSet = db.rawQuery(query,null);
+
+        query = "SELECT * FROM "+ TABLE_HIGH+ " INDEXED BY " +COLUMN_HISCORE +
+                ";";
+        recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        if(recordSet != null){
+            do{
+                String name = recordSet.getString(recordSet.getColumnIndex(COLUMN_NAME));
+                int num=recordSet.getInt(recordSet.getColumnIndex(COLUMN_HISCORE));
+                String Name_num=name + "    :    " + Integer.toString(num);
+                listItems.add(Name_num);
+                recordSet.moveToNext();
+            }while(!recordSet.isAfterLast());
+
+        }
+        recordSet.close();
+        return listItems;
+    }
+    */
+
 }
 //SELECT count(*) FROM COMPANY;
 

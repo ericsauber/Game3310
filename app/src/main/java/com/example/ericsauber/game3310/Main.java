@@ -12,6 +12,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
        // SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("sqlite-db-1.db",MODE_PRIVATE,null);
 
 //        String sql = "DROP TABLE IF EXISTS Contacts";
@@ -42,11 +43,11 @@ public class Main extends AppCompatActivity {
 //        sqLiteDatabase.close();
     }
 
-//    public void gotoDBtest(View view) {
-//
-//        Intent intent = new Intent(this, DatabaseTest.class);
-//        startActivity(intent);
-//    }
+    public void gotoHighscoreTable(View view) {
+
+        Intent intent = new Intent(this, HighscoreTable.class);
+        startActivity(intent);
+    }
 
     public void gotoLevel1a(View view) {
 
