@@ -57,7 +57,9 @@
         <activity android:name=".Level3g" />
         <activity android:name=".Level3h" />
         <activity android:name=".Registration" />
-        <activity android:name=".Level3i"></activity>
+        <activity android:name=".activity_levelalg"/>
+        <activity android:name=".Highcore">
+        </activity>
     </application>
 
 </manifest>

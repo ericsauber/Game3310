@@ -64,8 +64,8 @@ public class Registration extends AppCompatActivity {
             password2Input.setText("");
             }
         else{
-            String found = dbHandler.searchPass(userInput.getText().toString());
-            if(found == null || found == "") {
+            String found = dbHandler.searchPassWord(userInput.getText().toString());
+            if(found == null) {
 
                 Contact contact = new Contact();
                 contact.setName(userInput.getText().toString());

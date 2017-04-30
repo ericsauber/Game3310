@@ -50,7 +50,8 @@ public class Main extends AppCompatActivity {
 
     public void gotoLevel1a(View view) {
 
-        Intent intent = new Intent(this, Level1a.class);
+        //Intent intent = new Intent(this, Level1a.class);
+        Intent intent = new Intent(this, activity_levelalg.class);
         startActivity(intent);
     }
 

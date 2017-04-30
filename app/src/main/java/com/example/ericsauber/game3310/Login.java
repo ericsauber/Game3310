@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
     public void loginButtonClicked(View view){
         String namestr = userInput.getText().toString();
         String passwordstr = passwordInput.getText().toString();
-        String getpassword = dbHandler.searchPass(namestr);
+        String getpassword = dbHandler.searchPassWord(namestr);
 
         Toast passw = Toast.makeText(this, " "+getpassword+" " +passwordstr+" ", Toast.LENGTH_SHORT);
         passw.show();
