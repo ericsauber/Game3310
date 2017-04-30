@@ -15,11 +15,6 @@ import java.util.ArrayList;
 
 public class HighscoreTable extends AppCompatActivity {
     MyDBHandler dbHandler;
-    //private ArrayList<String> results = new ArrayList<String>();
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,18 +37,13 @@ public class HighscoreTable extends AppCompatActivity {
                 thelist.add(Name_num);
                 ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
                 listview.setAdapter(listAdapter);
-
             }
         }
         recordSet.close();
 
     }
-//    public void displayResultsList(){
-//        TextView tview= new TextView(this);
-//        tview.setText("This data is retrieved from the database and only 4 " +
-//                "of the results are displayed");
-//        //getListView().addHeaderView(tview);
-//    }
+
+
     public void gotoMain(View view) {
 
         Intent intent = new Intent(this, Main.class);
