@@ -7,14 +7,17 @@ import android.view.View;
 import android.widget.TextView;
 
 public class Level2f extends AppCompatActivity {
-int score;
+    int score;
+    int lives;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level2f);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
-        int score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
         TextView scoreView = (TextView) findViewById(R.id.textView35);
         scoreView.setText("Score : " + score);
     }
@@ -23,6 +26,7 @@ int score;
 
         Intent intent = new Intent(this, Level3a.class);
         intent.putExtra("score", score);
+        intent.putExtra("lives", lives);
         startActivity(intent);
     }
 }

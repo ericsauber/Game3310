@@ -11,6 +11,8 @@ import android.widget.TextView;
 public class Level2d extends AppCompatActivity {
 
     int score=0;
+    int level=2;
+    int lives;
     Button b;
     TextView round;
     TextView acc;
@@ -27,10 +29,12 @@ public class Level2d extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level2d);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
         round = (TextView) findViewById(R.id.Level2d_progress);
         round.setText("0/5 Score: " + score);
         x=0;
@@ -40,13 +44,13 @@ public class Level2d extends AppCompatActivity {
         arr[3]= "13";
         arr[4]= "14";
     }
-    public void button(View view)
-    {
+    public void button(View view) {
+
         b = (Button) view;
-        //round = (TextView) findViewById(R.id.Level1c_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
+
         if(arr[x].equals(letter)) {
+
             score = score + 10;
             x++;
 
@@ -54,35 +58,28 @@ public class Level2d extends AppCompatActivity {
 
                 pattern = (TextView) findViewById(R.id.Level2d_text1);
                 pattern.setText("");
-
             }
-
 
             y++;
 
             if (x == 5) {
+
                 Intent intent = new Intent(this, Level2e.class);
                 intent.putExtra("score", score);
+                intent.putExtra("lives", lives);
                 startActivity(intent);
                 finish();
             }
-            round.setText(y+ "/5" + " Score: " + score);
-            //acc.setText("Correct!");
 
-        }else if (error == 2) {
-            Intent intent = new Intent(this, Level2d.class);
-            intent.putExtra("score", score);
+
+        } else {
+
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("level", level);
+            intent.putExtra("lives", lives);
             startActivity(intent);
             finish();
-        } else if (error == 1) {
-            //acc.setText("Incorrect! 2/2 Mistakes used.");
-            error++;
-        } else {
-            //acc.setText("Incorrect! 1/2 Mistakes used.");
-            error++;
         }
-
-
     }
 
 

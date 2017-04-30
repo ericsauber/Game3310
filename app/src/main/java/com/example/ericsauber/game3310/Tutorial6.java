@@ -30,111 +30,91 @@ public class Tutorial6 extends AppCompatActivity {
         setContentView(R.layout.activity_tutorial6);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
-        round = (TextView) findViewById(R.id.textView16);
-        round.setText("0/5 Score: " + score);
         x=0;
-        arr[0]= "A";
-        arr[1]= "B";
-        arr[2]= "C";
-        arr[3]= "D";
-        arr[4]= "E";
-        num[0]= 1;
-        num[1]= 2;
-        num[2]= 3;
-        num[3]= 4;
-        num[4]= 5;
+        arr[0]= "C";
+        arr[1]= "D";
+        arr[2]= "E";
+        arr[3]= "F";
+        arr[4]= "G";
+        num[0]= 3;
+        num[1]= 4;
+        num[2]= 5;
+        num[3]= 6;
+        num[4]= 7;
     }
-    public void buttonL(View view)
-    {
+
+    public void buttonL(View view) {
+
         b = (Button) view;
-        round = (TextView) findViewById(R.id.textView16);
-        acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
-        if(zB==0)
-        {
 
-
+        if(zB==0) {
 
             if (error == 2) {
+
                 Intent intent = new Intent(this, Tutorial6.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
-
             }
-            error++;
-            acc.setText("Incorrect. Do the Number first. " + error + "/2 Mistakes used.");
-
-
         }
         else {
+
             if (arr[x].equals(letter)) {
+
                 score = score + 20;
                 zB=0;
                 x++;
                 y++;
+
                 if (x == 5) {
-                    Intent intent = new Intent(this, Tutorial9.class);
+
+                    Intent intent = new Intent(this, Tutorial7.class);
                     intent.putExtra("score", score);
                     startActivity(intent);
                     finish();
                 }
             }
-            else if (error == 2) {
+            else {
+
                 Intent intent = new Intent(this, Tutorial6.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
-            } else if (error == 1) {
-                acc.setText("Incorrect! 2/2 Mistakes used.");
-                error++;
-            } else {
-                acc.setText("Incorrect! 1/2 Mistakes used.");
-                error++;
             }
-            round.setText(y + "/5" + " Score: " + score);
-            acc.setText("Correct!");
-
         }
     }
     public void buttonN(View view) {
+
         b = (Button) view;
-        round = (TextView) findViewById(R.id.textView16);
-        acc = (TextView) findViewById(R.id.textView17);
         int bt = Integer.parseInt((String) b.getText());
 
         if (num[x] == bt) {
-            if (zB == 0) {
+
+            if (zB == 0)
                 zB++;
-            }
-            else if (error >= 2) {
-                Intent intent = new Intent(this, Tutorial9.class);
+
+            else  {
+                Intent intent = new Intent(this, Tutorial6.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
-            } else if (error >= 1) {
-                acc.setText("Incorrect! 2/2 Mistakes used.");
-                error++;
-            } else {
-                acc.setText("Incorrect! 1/2 Mistakes used.");
-                error++;
             }
         }
-        else
-        {
+        else {
+
             error++;
+
             if (error >= 2) {
-                Intent intent = new Intent(this, Tutorial7.class);
+
+                Intent intent = new Intent(this, Tutorial6.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
             }
-            acc.setText("Incorrect! Mistakes used" + error + "/2");
-            if(zB!=0)
-            {
-                zB=0;
-            }
 
+            if(zB!=0)
+                zB=0;
         }
     }
 

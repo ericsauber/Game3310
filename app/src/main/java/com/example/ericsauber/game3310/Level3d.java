@@ -6,19 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Level3d extends AppCompatActivity {
-int score;
+
+    int score;
+    int lives;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3d);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
     }
 
     public void gotoLevel3e(View view) {
 
         Intent intent = new Intent(this, Level3e.class);
         intent.putExtra("score", score);
+        intent.putExtra("lives", lives);
         startActivity(intent);
     }
 }

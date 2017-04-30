@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ericsauber.game3310.Tutorial5">
+    tools:context="com.example.ericsauber.game3310.Level3j">
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/imageView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -16,40 +16,40 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mmscreen3" />
+        app:srcCompat="@drawable/mmlevel3" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="171dp"
-        android:text="GOOD JOB!"
+        android:text="Time : xxxxx"
         android:textSize="30sp"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageView20"
+        android:layout_marginTop="287dp" />
 
-    <Button
-        android:id="@+id/button4"
+    <TextView
+        android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="22dp"
+        android:text="Score : xxxxx"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="next"
-        android:onClick="gotoTutorial6"
+        android:onClick="gotoLevel4a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="261dp"
-        android:layout_height="186dp"
-        android:layout_marginTop="79dp"
-        android:text="Now try to combine the two."
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>

@@ -11,6 +11,8 @@ import android.widget.TextView;
 public class Level3b extends AppCompatActivity {
 
     int score=0;
+    int lives;
+    int level = 3;
     Button b;
     TextView round;
     TextView acc;
@@ -27,10 +29,12 @@ public class Level3b extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3b);
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
+        lives = extras.getIntExtra("lives", 1);
         round = (TextView) findViewById(R.id.Level3b_progress);
         round.setText("0/5 Score: " + score);
         x=0;
@@ -45,63 +49,52 @@ public class Level3b extends AppCompatActivity {
         num[3]= 6;
         num[4]= 7;
     }
-    public void buttonL(View view)
-    {
+
+    public void buttonL(View view) {
+
         b = (Button) view;
-        round = (TextView) findViewById(R.id.Level3b_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
-        if(zB==0)
-        {
+        if(zB==0) {
 
-
-
-            if (error == 2) {
-                Intent intent = new Intent(this, Level3b.class);
-                intent.putExtra("score", score);
-                startActivity(intent);
-                finish();
-
-            }
-            error++;
-            //acc.setText("Incorrect. Do the Number first. " + error + "/2 Mistakes used.");
-
-
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("score", score);
+            intent.putExtra("lives", lives);
+            intent.putExtra("level", level);
+            startActivity(intent);
+            finish();
         }
         else {
+
             if (arr[x].equals(letter)) {
+
                 score = score + 20;
                 zB=0;
                 x++;
                 y++;
                 if (x == 5) {
+
                     Intent intent = new Intent(this, Level3c.class);
                     intent.putExtra("score", score);
+                    intent.putExtra("lives", lives);
                     startActivity(intent);
                     finish();
                 }
             }
-            else if (error == 2) {
-                Intent intent = new Intent(this, Level3b.class);
+            else {
+
+                Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
+                intent.putExtra("lives", lives);
+                intent.putExtra("level", level);
                 startActivity(intent);
                 finish();
-            } else if (error == 1) {
-                //acc.setText("Incorrect! 2/2 Mistakes used.");
-                error++;
-            } else {
-                //acc.setText("Incorrect! 1/2 Mistakes used.");
-                error++;
             }
-            round.setText(y + "/5" + " Score: " + score);
-            //acc.setText("Correct!");
-
         }
     }
+
     public void buttonN(View view) {
+
         b = (Button) view;
-        round = (TextView) findViewById(R.id.Level3b_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         int bt = Integer.parseInt((String) b.getText());
 
         if (num[x] == bt) {
@@ -111,35 +104,24 @@ public class Level3b extends AppCompatActivity {
                 pattern.setText("");
                 zB++;
             }
-            else if (error >= 2) {
-                Intent intent = new Intent(this, Level3b.class);
+            else {
+
+                Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
+                intent.putExtra("level", level);
+                intent.putExtra("lives", lives);
                 startActivity(intent);
                 finish();
-            } else if (error >= 1) {
-                //acc.setText("Incorrect! 2/2 Mistakes used.");
-                error++;
-            } else {
-                //acc.setText("Incorrect! 1/2 Mistakes used.");
-                error++;
             }
         }
-        else
-        {
-            error++;
-            if (error >= 2) {
-                Intent intent = new Intent(this, Level3b.class);
-                intent.putExtra("score", score);
-                startActivity(intent);
-                finish();
-            }
-            //acc.setText("Incorrect! Mistakes used" + error + "/2");
-            if(zB!=0)
-            {
-                zB=0;
-            }
+        else {
 
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("score", score);
+            intent.putExtra("lives", lives);
+            intent.putExtra("level", level);
+            startActivity(intent);
+            finish();
         }
     }
-
 }

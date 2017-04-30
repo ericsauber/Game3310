@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 public class Level1c extends AppCompatActivity {
     int score=0;
+    int level=1;
+    int lives;
+    int level2 = 22;
     Button b;
     TextView round;
     TextView acc;
@@ -21,17 +24,15 @@ public class Level1c extends AppCompatActivity {
     EditText ed;
     Button button;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1c);
-        round = (TextView) findViewById(R.id.Level1c_progress);
-        round.setText("0/5 Score: " + score);
+        Intent extras = getIntent();
+        lives = extras.getIntExtra("lives",1);
         error=0;
         x=0;
-        Intent extras = getIntent();
+
         score = extras.getIntExtra("score", 1);
         arr[0]= "4";
         arr[1]= "5";
@@ -42,8 +43,6 @@ public class Level1c extends AppCompatActivity {
     public void button(View view)
     {
         b = (Button) view;
-        //round = (TextView) findViewById(R.id.Level1c_progress);
-        //acc = (TextView) findViewById(R.id.textView17);
         String letter = (String) b.getText();
         if(arr[x].equals(letter)) {
             score = score + 10;
@@ -53,31 +52,19 @@ public class Level1c extends AppCompatActivity {
             if (x == 5) {
                 Intent intent = new Intent(this, Level1d.class);
                 intent.putExtra("score", score);
+                intent.putExtra("lives", lives);
                 startActivity(intent);
                 finish();
             }
-            round.setText(y+ "/5" + " Score: " + score);
-            //acc.setText("Correct!");
 
-        }else if (error == 2) {
-            Intent intent = new Intent(this, Level1c.class);
-            intent.putExtra("score", score);
+        } else {
+
+            Intent intent = new Intent(this, Wrong.class);
+            intent.putExtra("level", level);
+            intent.putExtra("lives", lives);
             startActivity(intent);
             finish();
-        } else if (error == 1) {
-            //acc.setText("Incorrect! 2/2 Mistakes used.");
-            error++;
-        } else {
-            //acc.setText("Incorrect! 1/2 Mistakes used.");
-            error++;
         }
-
-
     }
-
-
-
-
-
 }
 
