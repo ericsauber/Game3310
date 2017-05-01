@@ -17,4 +17,9 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
+    <style name="sequencesuccessdialog" parent="android:Theme.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/holo_blue_bright</item>
+    </style>
+
 </resources>
