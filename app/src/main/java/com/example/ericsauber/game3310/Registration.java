@@ -88,6 +88,7 @@ public class Registration extends AppCompatActivity {
 
 
     }
+    
     public void gotoMain(View view) {
 
         Intent intent = new Intent(this, Main.class);
@@ -103,118 +104,5 @@ public class Registration extends AppCompatActivity {
 
 }
 
-
-
-//    MyDBHandler myDb;
-//    EditText editName, editPassword, editPassword2;
-//    Button regsignupbtn;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_registration);
-//        myDb = new MyDBHandler(this);
-//
-//        editName = (EditText)findViewById(R.id.Registration_username);
-//        //String namestr = editName.getText().toString();
-//
-//        editPassword = (EditText)findViewById(R.id.Registration_password);
-//        //String passwordstr = editPassword.getText().toString();
-//
-//        editPassword2 = (EditText)findViewById(R.id.Registration_password2);
-//        //String password2str = editPassword2.getText().toString();
-//        regsignupbtn = (Button)findViewById(Registration_signup);
-//        AddData();
-//
-//        if(!passwordstr.equals(password2str)){
-//            //popup messsage passwords do not match
-//            Toast pass = Toast.makeText(Registration.this,"Passwords don't match!", Toast.LENGTH_SHORT);
-//            pass.show();
-//        }
-//
-//        else{
-//            //insert into database
-//            Contact c = new Contact();
-//            c.setName(namestr);
-//            c.setPassword(passwordstr);
-//
-//            //helper.insertContact();
-//        }
-//
-//
-//    }
-//
-//    public void AddData() {
-//
-//        regsignupbtn.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void OnClick(View v) {
-//                        boolean isInserted = myDb.insertContact(editName.getText().toString(), editPassword.getText().toString());
-//
-//                        if (isInserted == true) {
-//                            Toast.makeText(Registration.this, "succesfully created", Toast.LENGTH_LONG).show();
-//                        } else
-//                            Toast.makeText(Registration.this, "error not created", Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//
-//        );
-//    }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//}
-//
-////    public void onRegistrationClick(View v)
-////    {
-////        if(v.getId() == R.id.Registration_signup)
-////        {
-////            EditText name = (EditText)findViewById(R.id.Registration_username);
-////            String namestr = name.getText().toString();
-////
-////            EditText password = (EditText)findViewById(R.id.Registration_password);
-////            String passwordstr = password.getText().toString();
-////
-////            EditText password2 = (EditText)findViewById(R.id.Registration_password2);
-////            String password2str = password2.getText().toString();
-////
-////            if(!passwordstr.equals(password2str)){
-////                //popup messsage passwords do not match
-////                Toast pass = Toast.makeText(Registration.this,"Passwords don't match!", Toast.LENGTH_SHORT);
-////                pass.show();
-////            }
-////
-////            else{
-////                //insert into database
-////                Contact c = new Contact();
-////                c.setName(namestr);
-////                c.setPassword(passwordstr);
-////
-////                helper.insertContact();
-////
-////            }
-//////            Intent i = new Intent(Registration.this, Main.class);
-//////            i.putExtra("name", str);
-////
-////        }
 
 

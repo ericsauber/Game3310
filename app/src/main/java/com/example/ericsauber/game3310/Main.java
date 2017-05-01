@@ -1,68 +1,19 @@
 package com.example.ericsauber.game3310;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageButton;
-
-import static com.example.ericsauber.game3310.R.id.Main_playgame;
-import static com.example.ericsauber.game3310.R.id.button;
 
 public class Main extends AppCompatActivity {
     //private static final String TAG = "Main";
-
-
-
-
-
-
+    MyDBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
-
-
-
-       // SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("sqlite-db-1.db",MODE_PRIVATE,null);
-
-//        String sql = "DROP TABLE IF EXISTS Contacts";
-//        Log.d(TAG, "onCreate: sql = " + sql);
-//        sqLiteDatabase.execSQL(sql);
-//        sql = "CREATE TABLE IF NOT EXISTS contacts(name TEXT, phone INTEGER);";
-//        Log.d(TAG, "onCreate: sql is " + sql);
-//        sqLiteDatabase.execSQL(sql);
-//
-//        sql= "INSERT INTO contacts VALUES('nohemi','1234567890');";
-//        Log.d(TAG, "onCreate: sql is " + sql);
-//        sqLiteDatabase.execSQL(sql);
-//        sql = "INSERT INTO contacts VALUES('test','213233333');";
-//        Log.d(TAG, "onCreate: sql is " + sql);
-//        sqLiteDatabase.execSQL(sql);
-
-
-//        Cursor query = sqLiteDatabase.rawQuery("SELECT * FROM contacts",null);
-//        if(query .moveToFirst()){
-//            do{
-//                String name = query.getString(0);
-//                int phone = query.getInt(1);
-//                Toast.makeText(this, "Name = " +name + " phone = " + phone, Toast.LENGTH_LONG).show();
-//            }while(query.moveToNext());
-//
-//        }
-//        query.close();
-//        sqLiteDatabase.close();
-        //
-
-
-
-
-
 
 
     }
@@ -85,9 +36,22 @@ public class Main extends AppCompatActivity {
         Intent intent = new Intent(this, Tutorial1.class);
         startActivity(intent);
     }
+    @Override
+    public void onBackPressed()
+    {
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        Cursor recordSet = dbHandler.getCursorPref();
+        String name="";
+        if(recordSet.moveToFirst()) {
+            Intent intent = new Intent(this, Main.class);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+        }
 
-
-
+    }
 
 }
 
