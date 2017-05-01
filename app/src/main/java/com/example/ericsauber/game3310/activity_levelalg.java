@@ -87,7 +87,6 @@ public class activity_levelalg extends AppCompatActivity {
     /**********************************************/
     /* configuration methods for the memXdialogues*/
     /**********************************************/
-
     /*configuration methods for the dialogue created when sequence completed successfully*/
     /*and segment is 3 or 5 */
 
@@ -229,7 +228,7 @@ public class activity_levelalg extends AppCompatActivity {
                         }
                         else{
                             if(levelData.iterateWrongAnswers()) sequenceFailed(incDialog);
-                            configureWrongAnswersDiag(incDialog);
+                            else configureWrongAnswersDiag(incDialog);
                             updateWrongAnswers(incDialog);
                         }
                     }
@@ -257,13 +256,22 @@ public class activity_levelalg extends AppCompatActivity {
     /*method to update the progress text field on sequence dialogue*/
     private void updateProgress(final Dialog incDialog,int incProgress){
         TextView tempText = (TextView) incDialog.findViewById(R.id.txtProgress);
+        switch(levelData.getProgress()){
+            case(0): {tempText.setBackgroundResource(R.drawable.cheese5);break;}
+            case(1): {tempText.setBackgroundResource(R.drawable.cheese4);break;}
+            case(2): {tempText.setBackgroundResource(R.drawable.cheese3);break;}
+            case(3): {tempText.setBackgroundResource(R.drawable.cheese2);break;}
+            case(4): {tempText.setBackgroundResource(R.drawable.cheese1);break;}
+        }
         tempText.setText(String.format(Locale.getDefault(),"Progress: %d of 5 .",levelData.getProgress()));
     }
 
     /*method to update the wrong answers text field on sequence dialogue*/
     private void updateWrongAnswers(final Dialog incDialog){
         TextView tempText = (TextView) incDialog.findViewById(R.id.txtWrongAnswers);
-        tempText.setText(String.format(Locale.getDefault(),"Incorrect: %d of 2 .",levelData.getCurWrongAnswers()));
+        if(levelData.getCurWrongAnswers()==0) tempText.setBackgroundResource(R.drawable.wrongtwo);
+        if(levelData.getCurWrongAnswers()==1) tempText.setBackgroundResource(R.drawable.wrongone);
+        tempText.setText(String.format(Locale.getDefault(),"Incorrect:%d of 2.",levelData.getCurWrongAnswers()));
     }
 
     /*method to display the wrong answers dialoge for the first wrong answer*/

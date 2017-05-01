@@ -41,7 +41,10 @@
     <TextView
         android:id="@+id/txtSuccess2"
         android:layout_width="340dp"
-        android:layout_height="150dp"
+        android:layout_height="250dp"
+        android:layout_above="@+id/btnContinue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp"
         android:text="You got all the cheese from that round!      Click below to scurry on to the next step. "
         android:textAlignment="center"
         android:textSize="22sp"
@@ -50,10 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtSuccess"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginBottom="99dp"
-        android:layout_above="@+id/btnContinue"
-        android:layout_centerHorizontal="true" />
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/btnContinue"

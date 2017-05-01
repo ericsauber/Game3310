@@ -43,10 +43,9 @@
         android:text="Level Score: 0"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSegmentScore"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btnSeq3Val1"
-        android:layout_toStartOf="@+id/btnSeq3Val1"
-        android:layout_above="@+id/txtSequenceInstruct" />
+        android:layout_alignBottom="@+id/txtProgress"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/txtSegmentScore"
@@ -56,18 +55,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btnSeq2Val1"
-        android:layout_toStartOf="@+id/btnSeq2Val1"
         android:layout_marginRight="11dp"
         android:layout_marginEnd="11dp" />
 
     <TextView
         android:id="@+id/txtWrongAnswers"
-        android:layout_width="65dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/txtProgress"
+        android:background="@android:color/transparent"
+        android:drawableBottom="@drawable/wrongtwo"
         android:text="Incorrect"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtProgress"
@@ -106,10 +105,9 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/btnSeq1Val5"
         app:layout_constraintTop_toBottomOf="@+id/btnSeq2Val4"
-        android:layout_alignBaseline="@+id/btnSeq3Val5"
-        android:layout_alignBottom="@+id/btnSeq3Val5"
-        android:layout_toRightOf="@+id/btnSeq1Val4"
-        android:layout_toEndOf="@+id/btnSeq1Val4" />
+        android:layout_below="@+id/btnSeq2Val4"
+        android:layout_toLeftOf="@+id/txtWrongAnswers"
+        android:layout_toStartOf="@+id/txtWrongAnswers" />
 
     <Button
         android:id="@+id/btnSeq3Val5"
@@ -131,9 +129,10 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/btnSeq1Val4"
         app:layout_constraintTop_toBottomOf="@+id/btnSeq2Val3"
-        android:layout_below="@+id/btnSeq1Val3"
-        android:layout_toRightOf="@+id/btnSeq1Val3"
-        android:layout_toEndOf="@+id/btnSeq1Val3" />
+        android:layout_alignBaseline="@+id/btnSeq3Val4"
+        android:layout_alignBottom="@+id/btnSeq3Val4"
+        android:layout_toLeftOf="@+id/btnSeq3Val4"
+        android:layout_toStartOf="@+id/btnSeq3Val4" />
 
     <Button
         android:id="@+id/btnSeq3Val4"
@@ -156,12 +155,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="49dp"
-        android:layout_below="@+id/txtSegmentScore"
-        android:layout_alignRight="@+id/btnSeq2Val1"
-        android:layout_alignEnd="@+id/btnSeq2Val1"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="26dp" />
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/txtProgress"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/btnSeq1Val1"
@@ -171,10 +167,10 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSequenceInstruct"
-        android:layout_alignBaseline="@+id/btnSeq2Val1"
-        android:layout_alignBottom="@+id/btnSeq2Val1"
-        android:layout_toLeftOf="@+id/txtLevelScore"
-        android:layout_toStartOf="@+id/txtLevelScore" />
+
+        android:layout_above="@+id/btnSeq1Val2"
+        android:layout_toLeftOf="@+id/btnSeq2Val5"
+        android:layout_toStartOf="@+id/btnSeq2Val5" />
 
     <Button
         android:id="@+id/btnSeq1Val2"
@@ -211,8 +207,8 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSeq2Val2"
         android:layout_alignBaseline="@+id/btnSeq3Val3"
         android:layout_alignBottom="@+id/btnSeq3Val3"
-        android:layout_toRightOf="@+id/btnSeq1Val2"
-        android:layout_toEndOf="@+id/btnSeq1Val2" />
+        android:layout_alignLeft="@+id/btnSeq2Val2"
+        android:layout_alignStart="@+id/btnSeq2Val2" />
 
     <Button
         android:id="@+id/btnSeq3Val3"
@@ -223,8 +219,8 @@
         app:layout_constraintLeft_toRightOf="@+id/btnSeq2Val3"
         app:layout_constraintTop_toBottomOf="@+id/btnSeq3Val2"
         android:layout_below="@+id/btnSeq3Val2"
-        android:layout_toRightOf="@+id/btnSeq2Val2"
-        android:layout_toEndOf="@+id/btnSeq2Val2" />
+        android:layout_toRightOf="@+id/btnSeq2Val3"
+        android:layout_toEndOf="@+id/btnSeq2Val3" />
 
     <Button
         android:id="@+id/btnSeq2Val2"
@@ -234,9 +230,10 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/btnSeq1Val2"
         app:layout_constraintTop_toBottomOf="@+id/btnSeq2Val1"
-        android:layout_below="@+id/btnSeq1Val1"
-        android:layout_toRightOf="@+id/btnSeq1Val1"
-        android:layout_toEndOf="@+id/btnSeq1Val1" />
+        android:layout_alignBaseline="@+id/btnSeq1Val2"
+        android:layout_alignBottom="@+id/btnSeq1Val2"
+        android:layout_alignLeft="@+id/btnSeq2Val1"
+        android:layout_alignStart="@+id/btnSeq2Val1" />
 
     <Button
         android:id="@+id/btnSeq3Val2"
@@ -246,9 +243,9 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/btnSeq2Val2"
         app:layout_constraintTop_toBottomOf="@+id/btnSeq3Val1"
-        android:layout_below="@+id/btnSeq3Val1"
-        android:layout_toRightOf="@+id/btnSeq2Val1"
-        android:layout_toEndOf="@+id/btnSeq2Val1" />
+        android:layout_below="@+id/btnSeq2Val1"
+        android:layout_toRightOf="@+id/btnSeq2Val2"
+        android:layout_toEndOf="@+id/btnSeq2Val2" />
 
     <Button
         android:id="@+id/btnSeq2Val1"
@@ -258,10 +255,9 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/btnSeq1Val1"
         app:layout_constraintTop_toBottomOf="@+id/txtSequenceInstruct"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="47dp"
         android:layout_below="@+id/txtWrongAnswers"
-        android:layout_toRightOf="@+id/btnSeq1Val1"
-        android:layout_toEndOf="@+id/btnSeq1Val1" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/btnSeq3Val1"
@@ -270,20 +266,21 @@
         android:text="Seq3Val1"
         android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@+id/btnSeq2Val1"
-        app:layout_constraintTop_toBottomOf="@+id/txtSequenceInstruct"
-        android:layout_alignBaseline="@+id/btnSeq2Val1"
-        android:layout_alignBottom="@+id/btnSeq2Val1"
-        android:layout_toLeftOf="@+id/txtWrongAnswers"
-        android:layout_toStartOf="@+id/txtWrongAnswers" />
+        android:layout_above="@+id/btnSeq3Val2"
+        android:layout_toRightOf="@+id/btnSeq2Val1"
+        android:layout_toEndOf="@+id/btnSeq2Val1" />
 
     <TextView
         android:id="@+id/txtProgress"
-        android:layout_width="65dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:drawableBottom="@drawable/cheese5"
         android:text="Progress"
+
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLevelScore"
         tools:layout_editor_absoluteX="303dp"
