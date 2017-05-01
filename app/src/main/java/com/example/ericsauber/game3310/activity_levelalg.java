@@ -160,7 +160,7 @@ public class activity_levelalg extends AppCompatActivity {
         contBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((EditText) incDialog.findViewById(R.id.editTxtMemX)).getText().equals(Integer.toString(levelData.getFinalMemX()))) {
+                if ((((EditText) incDialog.findViewById(R.id.editTxtMemX)).getText()).equals(Integer.toString(levelData.getFinalMemX()))) {
                     ((TextView) incDialog.findViewById(R.id.txtLevelDisplay)).setText(String.format(Locale.getDefault(),"Correct!"));
                     incDialog.findViewById(R.id.txtLevelDisplay).setVisibility(View.VISIBLE);
                     try {
