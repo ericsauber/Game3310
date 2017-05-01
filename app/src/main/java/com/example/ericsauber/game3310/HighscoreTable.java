@@ -26,17 +26,28 @@ public class HighscoreTable extends AppCompatActivity {
         ArrayList<String> thelist= new ArrayList<>();
         Cursor recordSet = dbHandler.getCursor();
 
+
         if(recordSet.getCount() == 0){
             Toast.makeText(this, "There are no contents in this list!",Toast.LENGTH_LONG).show();
         }
         else{
+            int i = 0;
             while(recordSet.moveToNext()){
                 String name = recordSet.getString(0);
+                String Name_num;
                 int num = recordSet.getInt(1);
-                String Name_num = name + "    :    " + Integer.toString(num);
+
+                if(i==0) {
+                    Name_num = "PLAYER          SCORE";
+                    thelist.add(Name_num);
+                    ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
+                    listview.setAdapter(listAdapter);
+                }
+                Name_num = name + "    :    " + Integer.toString(num);
                 thelist.add(Name_num);
                 ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
                 listview.setAdapter(listAdapter);
+                i++;
             }
         }
         recordSet.close();
