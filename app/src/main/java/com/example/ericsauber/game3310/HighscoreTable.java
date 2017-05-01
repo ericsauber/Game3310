@@ -33,16 +33,15 @@ public class HighscoreTable extends AppCompatActivity {
         else{
             int i = 0;
             while(recordSet.moveToNext()){
-                String name = recordSet.getString(0);
                 String Name_num;
-                int num = recordSet.getInt(1);
-
                 if(i==0) {
                     Name_num = "PLAYER          SCORE";
                     thelist.add(Name_num);
                     ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
                     listview.setAdapter(listAdapter);
                 }
+                int num = recordSet.getInt(1);
+                String name = recordSet.getString(0);
                 Name_num = name + "    :    " + Integer.toString(num);
                 thelist.add(Name_num);
                 ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
