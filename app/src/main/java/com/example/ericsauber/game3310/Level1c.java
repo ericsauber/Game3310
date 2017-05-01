@@ -44,6 +44,7 @@ public class Level1c extends AppCompatActivity {
     {
         b = (Button) view;
         String letter = (String) b.getText();
+
         if(arr[x].equals(letter)) {
             score = score + 10;
             x++;

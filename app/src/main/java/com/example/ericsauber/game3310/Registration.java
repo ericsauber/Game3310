@@ -41,7 +41,7 @@ public class Registration extends AppCompatActivity {
         password2Input.setText("");
         Toast pass = Toast.makeText(Registration.this,"Username created!", Toast.LENGTH_SHORT);
         pass.show();
-        recordsTextView.setText("");
+
 
     }
 
@@ -64,11 +64,17 @@ public class Registration extends AppCompatActivity {
             else {
                 String found = dbHandler.searchPassWord(userInput.getText().toString());
                 if (found.equals("")) {
+                    int i =1;
                     Contact contact = new Contact();
                     contact.setName(userInput.getText().toString());
                     contact.setPassword(passwordInput.getText().toString());
+                    contact.setLoginStatus(i);
                     dbHandler.addContact(contact);
-                    printDatabase();
+                    dbHandler.setPrefname(userInput.getText().toString());
+                    Intent intent = new Intent(this, Main.class);
+                    startActivity(intent);
+                    finish();
+
                 } else {
                     Toast pass = Toast.makeText(Registration.this, "Username already exists", Toast.LENGTH_SHORT);
                     pass.show();

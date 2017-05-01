@@ -24,12 +24,13 @@ public class HighscoreTable extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscoretable);
         t=(TextView) findViewById(R.id.DBtest_text);
-
-        ListView listview=(ListView)findViewById(R.id.listView);
+        ListView listscore=(ListView)findViewById(R.id.listscore);
+        ListView listname=(ListView)findViewById(R.id.listsname);
         Typeface font=Typeface.createFromAsset(getAssets(),"fonts/MOUSETRAP!.otf");
         t.setTypeface(font);
         dbHandler = new MyDBHandler(this, null, null, 1);
-        ArrayList<String> thelist= new ArrayList<>();
+        ArrayList<String> arrname= new ArrayList<>();
+        ArrayList<String> arrscore= new ArrayList<>();
         Cursor recordSet = dbHandler.getCursor();
 
 
@@ -41,20 +42,27 @@ public class HighscoreTable extends AppCompatActivity {
             int i = 0;
             while(recordSet.moveToNext()){
                 String Name_num;
+                 String num;
                 if(i==0) {
-                    Name_num = "PLAYER          SCORE";
-                    thelist.add(Name_num);
-                    ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
-                    listview.setAdapter(listAdapter);
+                    Name_num = "PLAYER";
+                    arrname.add(Name_num);
+                    ListAdapter listAdaptername = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrname);
+                    listname.setAdapter(listAdaptername);
+                    Name_num = "HIGHSCORE";
+                    arrscore.add(Name_num);
+                    ListAdapter listAdapterscore  = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrscore);
+                    listscore.setAdapter(listAdapterscore);
                 }
-                int num = recordSet.getInt(1);
-                String name = recordSet.getString(0);
-                Name_num = name + "    :    " + Integer.toString(num);
-                thelist.add(Name_num);
 
-                ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, thelist);
+                num = Integer.toString(recordSet.getInt(1));
+                Name_num = recordSet.getString(0);
+                arrname.add(Name_num);
+                arrscore.add(num);
+                ListAdapter listAdaptername = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrname);
+                listname.setAdapter(listAdaptername);
 
-                listview.setAdapter(listAdapter);
+                ListAdapter listAdapterscore  = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrscore);
+                listscore.setAdapter(listAdapterscore);
 
                 i++;
             }

@@ -21,10 +21,15 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_LOGINSTATUS = "loginStatus";
 
     public static final String TABLE_HIGH = "high";
     public static final String COLUMN_HIID = "hi_id";
     public static final String COLUMN_HISCORE = "highscore";
+
+    public static final String TABLE_PREF = "pref";
+    public static final String COLUMN_MUSIC = "music";
+
     ListView listview;
 
     //public static final String COLUMN_NAME = "userid";
@@ -40,13 +45,17 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                COLUMN_NAME + " TEXT NOT NULL, " + COLUMN_PASSWORD + " TEXT NOT NULL" +
+                COLUMN_NAME + " TEXT NOT NULL, " + COLUMN_PASSWORD + " TEXT NOT NULL, " +
+                COLUMN_LOGINSTATUS + " INTEGER NOT NULL" +
                 ");";
         db.execSQL(query);
         query = "CREATE TABLE " + TABLE_HIGH +"("+ COLUMN_HIID + " INTEGER PRIMARY KEY, " +
                 COLUMN_NAME + " TEXT NOT NULL, " +
                 COLUMN_HISCORE + " INTEGER NOT NULL" +
                   ");";
+        db.execSQL(query);
+        query =  "CREATE TABLE " + TABLE_PREF +"("+ COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                COLUMN_MUSIC + " INTEGER, " + COLUMN_LOGINSTATUS + " TEXT);";
         db.execSQL(query);
 
     }
@@ -64,9 +73,40 @@ public class MyDBHandler extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, contacts.getName());
         values.put(COLUMN_PASSWORD, contacts.getPassword());
+        values.put(COLUMN_LOGINSTATUS, contacts.getLoginStatus());
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
+       // this.setPrefname(contacts.getName());
+    }
+    public void logout(String uid){
+        int i = 0;
+        String query = "UPDATE " +TABLE_NAME +
+                " SET " + COLUMN_LOGINSTATUS +
+                " = "+i+ " WHERE " +
+                COLUMN_NAME + " = \"" + uid +"\";";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(query);
+        uid="";
+        this.setPrefname(uid);
+
+    }
+    public int checklogstatus(){
+        int i = 0;
+        SQLiteDatabase db = getReadableDatabase();
+        String query ="SELECT count(*) FROM " + TABLE_NAME+" WHERE " +
+                COLUMN_LOGINSTATUS + " " +i+ ";";
+        Cursor recordSet = db.rawQuery(query, null);
+        i= recordSet.getInt(0);
+
+        if (i == 0){
+            i = -1;
+        }
+        else{
+            i = recordSet.getInt(recordSet.getColumnIndex("id"));
+        }
+        recordSet.close();
+        return i;
     }
 
 
@@ -159,13 +199,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
         recordSet.close();
         return id;
     }
-    /*
-    //DELETE last 5th HIGHSCORE from HIGHSCORE table
-    public void deleteHighScore(){
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_HIGH + " WHERE " + COLUMN_ID + "= 5;");
-    }
-    */
+
     //UPDATE HIGHSCORE where MIN highscore is;
     public void updateHighScore(Highcore highcore, int index){
 
@@ -208,16 +242,45 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public Cursor getCursor(){
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<String> listItems = new ArrayList<String>();
-//        String query = "SELECT * FROM " + TABLE_HIGH +";";
-//                ; //= "CREATE INDEX " +COLUMN_HISCORE + " ON (" + TABLE_HIGH +
-
         String query = "SELECT " + COLUMN_NAME+ ", "+ COLUMN_HISCORE+ " FROM "+TABLE_HIGH+" ORDER BY " + COLUMN_HISCORE +
                 " DESC;";
        Cursor recordSet = db.rawQuery(query, null);
-       // recordSet.moveToFirst();
         return recordSet;
 
     }
+    public Cursor getCursorPref() {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_PREF + ";";
+        Cursor recordSet = db.rawQuery(query, null);
+        return recordSet;
+
+    }
+    public void createpref(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "INSERT INTO " +TABLE_PREF+ "  VALUES('1','0','');";
+        db.execSQL(query);
+
+    }
+    public void setPrefname(String name){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String query= "UPDATE " +TABLE_PREF +
+                " SET " + COLUMN_LOGINSTATUS+
+                " = \"" +name+ "\" WHERE " +
+                COLUMN_ID+ " = 1;";
+        db.execSQL(query);
+    }
+    public void setPrefmusic(int i){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String query= "UPDATE " +TABLE_PREF +
+                " SET " + COLUMN_MUSIC+
+                " = \"" +i+ "\" WHERE " +
+                COLUMN_ID+ " = 1;";
+        db.execSQL(query);
+    }
+
+
     /*
     public ArrayList<String> getHighList(){
         SQLiteDatabase db = getReadableDatabase();
@@ -247,6 +310,6 @@ public class MyDBHandler extends SQLiteOpenHelper{
     */
 
 }
-//SELECT count(*) FROM COMPANY;
+
 
 

@@ -27,6 +27,7 @@ public class Wrong extends AppCompatActivity {
         lives--;
 
         if (lives == 0) {
+
             Intent intent = new Intent(this, GameOver.class);
 
             startActivity(intent);

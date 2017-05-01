@@ -3,7 +3,7 @@ package com.example.ericsauber.game3310;
 /**
  * Created by nohemi on 4/29/17.
  */
-
+//creates highscore inforamtion for table database
 public class Highcore {
 
     private int HI_id, HI_score;

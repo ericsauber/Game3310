@@ -1,6 +1,7 @@
 package com.example.ericsauber.game3310;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,16 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        Cursor recordSet = dbHandler.getCursorPref();
+        String name="";
+        if(recordSet.moveToFirst()) {
+            x = recordSet.getInt(recordSet.getColumnIndex("music"));
+            name = recordSet.getString(2);
+        }
+        else{
+            dbHandler.createpref();
+        }
 
 
         if (x == 0) {
@@ -29,6 +40,12 @@ public class Login extends AppCompatActivity {
             ring.start();
             ring.setLooping(true);
         }
+        if(!name.equals("")){
+            Intent intent = new Intent(this, Main.class);
+            startActivity(intent);
+        }
+
+
 
         final EditText editText1 = (EditText) findViewById(R.id.Login_username);
         final EditText editText2 = (EditText) findViewById(R.id.Login_password);
@@ -36,7 +53,7 @@ public class Login extends AppCompatActivity {
 
         userInput = (EditText) findViewById(R.id.Login_username);
         passwordInput = (EditText) findViewById(R.id.Login_password);
-        dbHandler = new MyDBHandler(this, null, null, 1);
+
     }
 
 
@@ -47,6 +64,7 @@ public class Login extends AppCompatActivity {
             String getpassword = dbHandler.searchPassWord(namestr);
 
             if (passwordstr.equals(getpassword)) {
+
                 Intent i = new Intent(this, Main.class);
                 startActivity(i);
             } else {
