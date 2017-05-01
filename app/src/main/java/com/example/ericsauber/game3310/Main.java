@@ -42,14 +42,20 @@ public class Main extends AppCompatActivity {
         dbHandler = new MyDBHandler(this, null, null, 1);
         Cursor recordSet = dbHandler.getCursorPref();
         String name="";
+
         if(recordSet.moveToFirst()) {
-            Intent intent = new Intent(this, Main.class);
-            startActivity(intent);
+            name = recordSet.getString(2);
+            if(!name.equals("")){
+                recordSet.close();
+                Intent intent = new Intent(this, Login.class);
+                startActivity(intent);
+            }
+
         }
-        else{
-            Intent intent = new Intent(this, Login.class);
-            startActivity(intent);
-        }
+
+        recordSet.close();
+        Intent intent = new Intent(this, Main.class);
+        startActivity(intent);
 
     }
 
