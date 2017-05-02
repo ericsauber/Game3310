@@ -25,6 +25,7 @@ public class activity_levelalg extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelalg);
+        levelData = new GameData();  //create new gamedatainstance for current level
         startLevel();
     }
 
@@ -43,9 +44,8 @@ public class activity_levelalg extends AppCompatActivity {
 
         Dialog new_diag;             // Custom dialog to spash new level information up between
 
-        levelData = new GameData();  //create new gamedatainstance for current level
+        levelData.newLevel();
         levelData.setTotalScore(score);
-
         levelData.setMaxValues(maxSequences,maxSequenceValues,maxGroceryListItems,maxWrong);
         new_diag=new Dialog(this,R.style.newlvl_diag);
         new_diag.setContentView(R.layout.newlvl_dialogue);
@@ -172,12 +172,17 @@ public class activity_levelalg extends AppCompatActivity {
                     } catch(InterruptedException ex) {
                         Thread.currentThread().interrupt();
                     }
+
+                    levelData.iterateCurLevel();
+                    startLevel();
+                    /*  Depreciated code replaced with new iteratecur level and startleve to move to 5.
                     levelData.generateSequenceData();
                     Dialog seq_diag;
                     seq_diag = new Dialog(v.getContext(), R.style.newlvl_diag);
                     seq_diag.setContentView(R.layout.sequence_dialogue);
                     configureSequenceDialog(seq_diag);
                     seq_diag.show();
+                    */
                     incDialog.dismiss();
                 }
                 else{

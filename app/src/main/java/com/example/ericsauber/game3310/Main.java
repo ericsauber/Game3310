@@ -32,6 +32,11 @@ public class Main extends AppCompatActivity {
         finish();
     }
 
+    public void exitApplication(View view) {
+        System.exit(0);
+        finish();
+    }
+
     public void gotoTutorial1(View view) {
 
         Intent intent = new Intent(this, Tutorial1.class);

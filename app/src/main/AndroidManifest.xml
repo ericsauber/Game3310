@@ -60,6 +60,8 @@
         <activity android:name=".Level3f" />
         <activity android:name=".Level3g" />
         <activity android:name=".Level3h" />
+        <activity android:name=".Level3i" />
+        <activity android:name=".Level3j" />
         <activity android:name=".Wrong" />
         <activity android:name=".GameOver" />
         <activity android:name=".Registration" />
