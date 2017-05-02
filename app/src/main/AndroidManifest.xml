@@ -58,7 +58,8 @@
         <activity android:name=".Level3h" />
         <activity android:name=".Registration" />
         <activity android:name=".activity_levelalg"/>
-        <activity android:name=".Highcore">
+        <activity android:name=".Highcore" />
+        <activity android:name=".Settings">
         </activity>
     </application>
 
