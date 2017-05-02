@@ -22,5 +22,6 @@ public class Level1b extends AppCompatActivity {
         Intent intent = new Intent(this, Level1c.class);
         intent.putExtra("lives", lives);
         startActivity(intent);
+        finish();
     }
 }

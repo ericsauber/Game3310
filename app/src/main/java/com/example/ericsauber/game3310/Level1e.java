@@ -29,11 +29,13 @@ public class Level1e extends AppCompatActivity {
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
             startActivity(intent);
+            finish();
         }
         else {
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("lives", lives);
             startActivity(intent);
+            finish();
         }
     }
 }

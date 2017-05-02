@@ -24,5 +24,6 @@ public class Level2a extends AppCompatActivity {
         intent.putExtra("score", score);
         intent.putExtra("lives", lives);
         startActivity(intent);
+        finish();
     }
 }

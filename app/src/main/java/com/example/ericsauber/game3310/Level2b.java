@@ -1,6 +1,7 @@
 package com.example.ericsauber.game3310;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,8 @@ public class Level2b extends AppCompatActivity {
     int z=0;
     EditText ed;
     Button button;
-
+    CountDownTimer bonus;
+    int time =10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,19 @@ public class Level2b extends AppCompatActivity {
         arr[2]= "8";
         arr[3]= "7";
         arr[4]= "6";
+        bonus = new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                time--;
+                acc = (TextView) findViewById(R.id.Level2b_progress);
+                acc.setText(String.valueOf(time));
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
     public void button(View view) {
@@ -52,6 +67,10 @@ public class Level2b extends AppCompatActivity {
             y++;
 
             if (x == 5) {
+                if(bonus!=null)
+                {
+                    bonus.cancel();
+                }
                 Intent intent = new Intent(this, Level2c.class);
                 intent.putExtra("score", score);
                 intent.putExtra("lives", lives);
