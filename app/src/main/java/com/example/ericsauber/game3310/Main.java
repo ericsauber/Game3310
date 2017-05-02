@@ -29,6 +29,7 @@ public class Main extends AppCompatActivity {
         Intent intent = new Intent(this, Level1a.class);
         //Intent intent = new Intent(this, activity_levelalg.class);
         startActivity(intent);
+        finish();
     }
 
     public void gotoTutorial1(View view) {

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 public class Level1c extends AppCompatActivity {
     int score = 0;
     int level = 1;
@@ -46,7 +47,7 @@ public class Level1c extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 time--;
-                acc = (TextView) findViewById(R.id.Level1c_progress);
+                acc = (TextView) findViewById(R.id.textView22);
                 acc.setText(String.valueOf(time));
             }
 
@@ -70,6 +71,7 @@ public class Level1c extends AppCompatActivity {
                 if (bonus != null) {
                     score=score+20;
                     bonus.cancel();
+                    bonus = null;
                 }
 
                 Intent intent = new Intent(this, Level1d.class);
@@ -80,7 +82,10 @@ public class Level1c extends AppCompatActivity {
 
             }
         } else {
-
+            if (bonus != null) {
+                bonus.cancel();
+                bonus = null;
+            }
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("level", level);
             intent.putExtra("lives", lives);

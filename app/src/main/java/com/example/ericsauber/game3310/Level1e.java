@@ -31,6 +31,10 @@ public class Level1e extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        else if(word.equals(""))
+        {
+
+        }
         else {
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("lives", lives);

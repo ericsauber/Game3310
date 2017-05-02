@@ -102,10 +102,17 @@
         android:id="@+id/textView17"
         android:layout_width="159dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="44dp"
-        android:layout_marginLeft="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="113dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.41" />
 
     <Button
         android:id="@+id/button6"
@@ -135,7 +142,7 @@
         android:layout_height="33dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="164dp"
         android:text="( 1 , B , 2 , C ... )"
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         app:layout_constraintLeft_toLeftOf="parent"

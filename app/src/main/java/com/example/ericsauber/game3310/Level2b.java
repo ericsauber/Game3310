@@ -45,7 +45,7 @@ public class Level2b extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 time--;
-                acc = (TextView) findViewById(R.id.Level2b_progress);
+                acc = (TextView) findViewById(R.id.textView22);
                 acc.setText(String.valueOf(time));
             }
 
@@ -70,6 +70,7 @@ public class Level2b extends AppCompatActivity {
                 if(bonus!=null)
                 {
                     bonus.cancel();
+                    bonus=null;
                 }
                 Intent intent = new Intent(this, Level2c.class);
                 intent.putExtra("score", score);
@@ -80,6 +81,10 @@ public class Level2b extends AppCompatActivity {
 
             round.setText(y+ "/5" + " Score: " + score);
         } else {
+            if (bonus != null) {
+                bonus.cancel();
+                bonus = null;
+            }
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("level", level);
             intent.putExtra("lives", lives);

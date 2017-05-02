@@ -21,9 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main" />
-        <activity android:name=".Contact" />
+        <activity android:name=".Highcore" />
         <activity android:name=".MyDBHandler" />
+        <activity android:name=".preference" />
+        <activity android:name=".preferenceTable" />
+        <activity android:name=".Contact" />
+        <activity android:name=".GameData" />
+        <activity android:name=".Main" />
         <activity android:name=".HighscoreTable" />
         <activity android:name=".Tutorial2" />
         <activity android:name=".Tutorial3" />
@@ -56,10 +60,12 @@
         <activity android:name=".Level3f" />
         <activity android:name=".Level3g" />
         <activity android:name=".Level3h" />
+        <activity android:name=".Wrong" />
+        <activity android:name=".GameOver" />
         <activity android:name=".Registration" />
         <activity android:name=".activity_levelalg"/>
-        <activity android:name=".Highcore" />
         <activity android:name=".Settings">
+
         </activity>
     </application>
 

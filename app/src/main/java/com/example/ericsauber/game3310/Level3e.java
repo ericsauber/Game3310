@@ -20,6 +20,7 @@ public class Level3e extends AppCompatActivity {
         Intent extras = getIntent();
         score = extras.getIntExtra("score", 1);
         lives = extras.getIntExtra("lives", 1);
+
     }
 
     public void gotoLevel3f(View view) {
@@ -33,6 +34,10 @@ public class Level3e extends AppCompatActivity {
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
             startActivity(intent);
+        }
+        else if(word.equals(""))
+        {
+
         }
         else {
 

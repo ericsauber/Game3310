@@ -1,6 +1,7 @@
 package com.example.ericsauber.game3310;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,8 @@ public class Level3b extends AppCompatActivity {
     EditText ed;
     Button button;
     TextView pattern;
+    CountDownTimer bonus;
+    int time=20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,19 @@ public class Level3b extends AppCompatActivity {
         num[2]= 5;
         num[3]= 6;
         num[4]= 7;
+        bonus = new CountDownTimer(20000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                time--;
+                acc = (TextView) findViewById(R.id.textView17);
+                acc.setText(String.valueOf(time));
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
     public void buttonL(View view) {
@@ -55,7 +71,10 @@ public class Level3b extends AppCompatActivity {
         b = (Button) view;
         String letter = (String) b.getText();
         if(zB==0) {
-
+            if (bonus != null) {
+                bonus.cancel();
+                bonus = null;
+            }
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
@@ -72,7 +91,12 @@ public class Level3b extends AppCompatActivity {
                 x++;
                 y++;
                 if (x == 5) {
-
+                    if(bonus!=null)
+                    {
+                        score=score+20;
+                        bonus.cancel();
+                        bonus = null;
+                    }
                     Intent intent = new Intent(this, Level3c.class);
                     intent.putExtra("score", score);
                     intent.putExtra("lives", lives);
@@ -81,7 +105,10 @@ public class Level3b extends AppCompatActivity {
                 }
             }
             else {
-
+                if (bonus != null) {
+                    bonus.cancel();
+                    bonus = null;
+                }
                 Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
                 intent.putExtra("lives", lives);
@@ -105,6 +132,10 @@ public class Level3b extends AppCompatActivity {
                 zB++;
             }
             else {
+                if (bonus != null) {
+                    bonus.cancel();
+                    bonus = null;
+                }
 
                 Intent intent = new Intent(this, Wrong.class);
                 intent.putExtra("score", score);
@@ -115,7 +146,10 @@ public class Level3b extends AppCompatActivity {
             }
         }
         else {
-
+            if (bonus != null) {
+                bonus.cancel();
+                bonus = null;
+            }
             Intent intent = new Intent(this, Wrong.class);
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
