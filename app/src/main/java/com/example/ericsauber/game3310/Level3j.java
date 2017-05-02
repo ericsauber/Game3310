@@ -25,7 +25,7 @@ public class Level3j extends AppCompatActivity {
 
     public void gotoLevel4a(View view) {
 
-        Intent intent = new Intent(this, Main.class);
+        Intent intent = new Intent(this, activity_levelalg.class);
         intent.putExtra("score", score);
         intent.putExtra("lives", lives);
         startActivity(intent);

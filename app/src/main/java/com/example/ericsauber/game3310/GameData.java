@@ -105,8 +105,8 @@ class GameData {
         Random rn = new Random();
         setMemX(rn.nextInt(5*(this.curLevel-1+this.curDifficulty))+1);
         for(int modCounter=0;modCounter<maxXMods;modCounter++){
-            int tempMod = rn.nextInt(99)+1;
-            if(tempMod%25>0) tempMod=(tempMod/25)+1; else tempMod=tempMod/25;
+            int tempMod = rn.nextInt(99);
+            tempMod=(tempMod/25)+1;
             setXMod(modCounter,tempMod,rn.nextInt(10)+1);
         }
         int curGroceryItems=rn.nextInt(maxGroceryItems-3)+1;
@@ -440,19 +440,19 @@ class GameData {
             curMod = (this.levelSegment - 3) / 2;
             int modType=this.xMods[curMod][0];
             switch(modType) {
-                case (0): {
+                case (1): {
                     desc= String.format(Locale.getDefault(),"%s add %d to X.", desc, this.xMods[curMod][1]);
                     break;
                 }
-                case (1): {
+                case (2): {
                     desc = String.format(Locale.getDefault(),"%s subtract %d from X.", desc, this.xMods[curMod][1]);
                     break;
                 }
-                case (2): {
+                case (3): {
                     desc = String.format(Locale.getDefault(),"%s multiply %d and X.", desc, this.xMods[curMod][1]);
                     break;
                 }
-                case (3): {
+                case (4): {
                     desc = String.format(Locale.getDefault(),"%s divide %d into X.", desc, this.xMods[curMod][1]);
                     break;
                 }
@@ -487,4 +487,5 @@ class GameData {
     private void setCurLevel(int incLevel) {this.curLevel=incLevel;}
     private void setMaxWrong(int incWrong) {this.maxWrong=incWrong;}
     public void setSegmentPointValue(int incPointValue) {this.segmentPointValue=incPointValue;}
+    public void setTotalScore(int incTotalScore) {this.totalScore=incTotalScore;}
 }

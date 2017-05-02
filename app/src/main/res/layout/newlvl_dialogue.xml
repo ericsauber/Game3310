@@ -27,12 +27,10 @@
         app:layout_constraintLeft_toRightOf="@+id/btnContinue"
         app:layout_constraintTop_toBottomOf="@+id/editTxtMemX"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="56dp"
-        android:layout_marginEnd="56dp"
         android:layout_alignBaseline="@+id/btnContinue"
         android:layout_alignBottom="@+id/btnContinue"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignRight="@+id/editTxtMemX"
+        android:layout_alignEnd="@+id/editTxtMemX" />
 
     <TextView
         android:id="@+id/txtLevelDisplay"
@@ -43,8 +41,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="95dp"
-        android:layout_alignBottom="@+id/editTxtMemX"
+        android:layout_marginBottom="58dp"
+        android:layout_alignBottom="@+id/txtSeqDisplay"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -58,16 +56,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTxtMemX"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="51dp"
         android:layout_alignBottom="@+id/imgViewSeqDiag"
-        android:layout_toLeftOf="@+id/txtLevelDisplay"
-        android:layout_toStartOf="@+id/txtLevelDisplay"
-        android:layout_marginBottom="54dp" />
+        android:layout_alignLeft="@+id/editTxtMemX"
+        android:layout_alignStart="@+id/editTxtMemX" />
 
     <TextView
         android:id="@+id/txtSeqDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/editTxtMemX"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -79,9 +80,9 @@
         android:layout_height="40dp"
         android:layout_above="@+id/btnMainMenu"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="83dp"
+        android:layout_marginBottom="116dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSeqDisplay" />

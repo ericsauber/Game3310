@@ -16,7 +16,8 @@ import java.util.Locale;
 public class activity_levelalg extends AppCompatActivity {
 
 
-
+    int score;
+    int lives;
     GameData levelData;          // Object containing generated game play data
     Button seqBtnArray[][];      // 2-D array containing all of the button items so that they can be easily manipulated for game play
 
@@ -43,6 +44,7 @@ public class activity_levelalg extends AppCompatActivity {
         Dialog new_diag;             // Custom dialog to spash new level information up between
 
         levelData = new GameData();  //create new gamedatainstance for current level
+        levelData.setTotalScore(score);
 
         levelData.setMaxValues(maxSequences,maxSequenceValues,maxGroceryListItems,maxWrong);
         new_diag=new Dialog(this,R.style.newlvl_diag);
@@ -69,6 +71,7 @@ public class activity_levelalg extends AppCompatActivity {
         tempText2.setText(String.format(Locale.getDefault(), "X=%d", levelData.getMemX()));
         tempEdit.setVisibility(View.INVISIBLE);
         tempEdit.setEnabled(false);
+
         contBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,7 +162,9 @@ public class activity_levelalg extends AppCompatActivity {
         contBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((((EditText) incDialog.findViewById(R.id.editTxtMemX)).getText()).equals(Integer.toString(levelData.getFinalMemX()))) {
+                EditText temp = (EditText) incDialog.findViewById(R.id.editTxtMemX);
+                String incString = temp.getText().toString();
+                if (incString.equals(Integer.toString(levelData.getFinalMemX()))) {
                     ((TextView) incDialog.findViewById(R.id.txtLevelDisplay)).setText(String.format(Locale.getDefault(),"Correct!"));
                     incDialog.findViewById(R.id.txtLevelDisplay).setVisibility(View.VISIBLE);
                     try {
@@ -256,6 +261,7 @@ public class activity_levelalg extends AppCompatActivity {
     /*method to update the progress text field on sequence dialogue*/
     private void updateProgress(final Dialog incDialog,int incProgress){
         TextView tempText = (TextView) incDialog.findViewById(R.id.txtProgress);
+        tempText.setAlpha((float)0.99);
         switch(levelData.getProgress()){
             case(0): {tempText.setBackgroundResource(R.drawable.cheese5);break;}
             case(1): {tempText.setBackgroundResource(R.drawable.cheese4);break;}
@@ -269,6 +275,7 @@ public class activity_levelalg extends AppCompatActivity {
     /*method to update the wrong answers text field on sequence dialogue*/
     private void updateWrongAnswers(final Dialog incDialog){
         TextView tempText = (TextView) incDialog.findViewById(R.id.txtWrongAnswers);
+        tempText.setAlpha((float)0.99);
         if(levelData.getCurWrongAnswers()==0) tempText.setBackgroundResource(R.drawable.wrongtwo);
         if(levelData.getCurWrongAnswers()==1) tempText.setBackgroundResource(R.drawable.wrongone);
         tempText.setText(String.format(Locale.getDefault(),"Incorrect:%d of 2.",levelData.getCurWrongAnswers()));
@@ -363,7 +370,9 @@ public class activity_levelalg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 incDialog.dismiss();
-                Intent intent = new Intent(incDialog.getContext(), Main.class);
+                score = levelData.getTotalScore();
+                Intent intent = new Intent(incDialog.getContext(), GameOver.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
         });
