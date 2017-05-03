@@ -1,6 +1,7 @@
 package com.example.ericsauber.game3310;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,8 +12,9 @@ public class Wrong extends AppCompatActivity {
     int level;
     int lives;
     int score;
-    int index;
+    int index,count,min;
     MyDBHandler dbHandler;
+    String name;
 
     TextView livesText;
 
@@ -20,7 +22,7 @@ public class Wrong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrong);
-
+        dbHandler = new MyDBHandler(this, null, null, 1);
         Intent extras = getIntent();
         score = extras.getIntExtra("score",1);
         level = extras.getIntExtra("level", 1);
@@ -29,11 +31,22 @@ public class Wrong extends AppCompatActivity {
         lives--;
 
         if (lives == 0) {
-//            dbHandler = new MyDBHandler(this, null, null, 1);
-//            index = dbHandler.searchHighScore(score);
-//            if(index>1){
-//                Cursor setData = dbHandler
-//            }
+            count = dbHandler.getCountHighScore();
+            Highcore highscore = new Highcore();
+            Cursor recordSet = dbHandler.getCursorPref();
+            recordSet.moveToFirst();
+            name = recordSet.getString(2);
+            highscore.setHI_name(name);
+            highscore.setHI_score(score);
+
+            if(count<=4) {
+                //insert
+                dbHandler.addHighScore(highscore);
+            }else{
+                index = dbHandler.getindexMIN(score);
+                dbHandler.updateHighScore(highscore,index);
+            }
+
             Intent intent = new Intent(this, GameOver.class);
             startActivity(intent);
         }

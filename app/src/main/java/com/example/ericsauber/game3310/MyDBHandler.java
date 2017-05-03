@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
 /**
  * Created by nohemi on 4/25/17.
  */
@@ -31,10 +29,6 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public static final String COLUMN_MUSIC = "music";
 
     ListView listview;
-
-    //public static final String COLUMN_NAME = "userid";
-
-
 
     //We need to pass database information along to superclass
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -65,6 +59,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_HIGH);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PREF);
         onCreate(db);
     }
 
@@ -110,15 +105,6 @@ public class MyDBHandler extends SQLiteOpenHelper{
     }
 
 
-    //Adds HIGHSCORE to HIGHSCORE table
-    public void addHighScore(Highcore highcore){
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_HISCORE, highcore.getHI_score());
-        values.put(COLUMN_NAME, highcore.getHI_Name());
-        SQLiteDatabase db = getWritableDatabase();
-        db.insert(TABLE_NAME, null, values);
-        db.close();
-    }
     //updatePassword
     public void updatePassword(String uname, String newpassword){
         String query = "UPDATE " +TABLE_NAME +
@@ -134,31 +120,6 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + "=\"" + name + "\";");
     }
 
-    // this RETURNS NAME JUST ADDED in record_TextView in the Main activity.
-    public String databaseToString(){
-        String dbString = "";
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE 1;";// why not leave out the WHERE  clause?
-
-        //Cursor points to a location in your results
-        Cursor recordSet = db.rawQuery(query, null);
-        //Move to the first row in your results
-        recordSet.moveToFirst();
-
-        //Position after the last row means the end of the results
-        while (!recordSet.isAfterLast()) {
-            // null could happen if we used our empty constructor
-            dbString="";
-            if (recordSet.getString(recordSet.getColumnIndex("name")) != null) {
-                dbString += recordSet.getString(recordSet.getColumnIndex("name"));
-                dbString += "\n";
-            }
-            recordSet.moveToNext();
-        }
-        recordSet.close();
-       // db.close();
-        return dbString;
-    }
 
     //Returns Password from CONTACTS Table
     public String searchPassWord(String uname){
@@ -186,6 +147,16 @@ public class MyDBHandler extends SQLiteOpenHelper{
         recordSet.close();
         return id;
     }
+    //Adds HIGHSCORE to HIGHSCORE table
+    public void addHighScore(Highcore highcore){
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_HISCORE, highcore.getHI_score());
+        values.put(COLUMN_NAME, highcore.getHI_Name());
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(TABLE_HIGH, null, values);
+        db.close();
+    }
+
     //RETURNS USERID from HIGHSCORE Table
     public String searchHighScore(int score){
         SQLiteDatabase db = getReadableDatabase();
@@ -212,21 +183,23 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
     }
 
-
+    //returns -1 norows exist, 0 if it is not
     public int getindexMIN(int highscore){
         int index = -1;
-        String query = "SELECT min(" +COLUMN_HISCORE + ") FROM "+TABLE_NAME+ ";";
+        String query = "SELECT min(" +COLUMN_HISCORE + ") FROM "+TABLE_HIGH+ ";";
         SQLiteDatabase db = getWritableDatabase();
         Cursor recordSet = db.rawQuery(query, null);
-        recordSet.moveToFirst();
-        if(highscore > recordSet.getInt(recordSet.getColumnIndex(COLUMN_HISCORE))){
-            index = recordSet.getInt(recordSet.getColumnIndex(COLUMN_HIID));
+        if(recordSet.moveToFirst()){
+            if(highscore >= recordSet.getInt(recordSet.getColumnIndex(COLUMN_HISCORE))){
+                index = recordSet.getInt(recordSet.getColumnIndex(COLUMN_HIID));
+             }
         }
+        recordSet.close();
         return index;
     }
 
     //returns total COUNT of Highscore recorded
-    public int getCountHighScore(int highscore){
+    public int getCountHighScore(){
         int count = 0;
 
         SQLiteDatabase db = getReadableDatabase();
@@ -241,7 +214,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
     }
     public Cursor getCursor(){
         SQLiteDatabase db = getReadableDatabase();
-        ArrayList<String> listItems = new ArrayList<String>();
+        //ArrayList<String> listItems = new ArrayList<String>();
         String query = "SELECT " + COLUMN_NAME+ ", "+ COLUMN_HISCORE+ " FROM "+TABLE_HIGH+" ORDER BY " + COLUMN_HISCORE +
                 " DESC;";
        Cursor recordSet = db.rawQuery(query, null);
@@ -271,45 +244,13 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.execSQL(query);
     }
     public void setPrefmusic(int i){
-
         SQLiteDatabase db = getWritableDatabase();
         String query= "UPDATE " +TABLE_PREF +
                 " SET " + COLUMN_MUSIC+
                 " = \"" +i+ "\" WHERE " +
                 COLUMN_ID+ " = 1;";
         db.execSQL(query);
-
     }
-
-
-    /*
-    public ArrayList<String> getHighList(){
-        SQLiteDatabase db = getReadableDatabase();
-        ArrayList<String> listItems = new ArrayList<String>();
-        String query = "CREATE INDEX " +COLUMN_HISCORE + " ON (" + TABLE_HIGH +
-                ");";
-        db.execSQL(query);
-        Cursor recordSet = db.rawQuery(query,null);
-
-        query = "SELECT * FROM "+ TABLE_HIGH+ " INDEXED BY " +COLUMN_HISCORE +
-                ";";
-        recordSet = db.rawQuery(query, null);
-        recordSet.moveToFirst();
-        if(recordSet != null){
-            do{
-                String name = recordSet.getString(recordSet.getColumnIndex(COLUMN_NAME));
-                int num=recordSet.getInt(recordSet.getColumnIndex(COLUMN_HISCORE));
-                String Name_num=name + "    :    " + Integer.toString(num);
-                listItems.add(Name_num);
-                recordSet.moveToNext();
-            }while(!recordSet.isAfterLast());
-
-        }
-        recordSet.close();
-        return listItems;
-    }
-    */
-
 }
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 public class Level1a extends AppCompatActivity {
 
     static int lives = 2;
+    static int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

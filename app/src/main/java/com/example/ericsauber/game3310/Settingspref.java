@@ -8,8 +8,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +20,11 @@ public class Settingspref extends AppCompatActivity{
     MyDBHandler dbHandler;
     TextView t;
     public static Button  btn;
-    String user;
-
+    String user,password, newpassword, conpassword;
+    private EditText result;
+    private EditText newresult;
     MediaPlayer ring;
-
+    Button logout;
 
 
 
@@ -36,6 +39,23 @@ public class Settingspref extends AppCompatActivity{
         t.setTypeface(font);
         ring = MediaPlayer.create(this,R.raw.mmsong);
         btn=(Button)findViewById(R.id.setting_logout);
+//        logout = (Button) findViewById(R.id.setting_music);
+//        logout.setVisibility(1);
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //when play is clicked show stop button and hide play button
+//                Cursor cursor = dbHandler.getCursorPref();
+//                cursor.moveToFirst();
+//                user =  cursor.getString(2);
+//                if(user.equals("")) {
+//                    logout.setVisibility(View.GONE);
+//                }
+//                else{
+//                    logout.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
     }
     public void gotoMain(View view  ){
         Intent intent = new Intent(this, Main.class);
@@ -81,24 +101,61 @@ public class Settingspref extends AppCompatActivity{
 
     public void changemusic(View view) {
 
-        Cursor recordSet= dbHandler.getCursorPref();
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.acitivity_changepass, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+        final EditText userInputNew = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInputNew);
+        final EditText userInputconf = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInputNewcon);
+
+        Cursor recordSet = dbHandler.getCursorPref();
         recordSet.moveToFirst();
+        user = recordSet.getString(2);
 
-        int x=recordSet.getInt(1);
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input
+                                password = userInput.getText().toString();
+                                newpassword = userInputNew.getText().toString();
+                                conpassword= userInputconf.getText().toString();
+                                if(!password.equals("") && !newpassword.equals("") && !conpassword.equals("")) {
+                                    String getpassword = dbHandler.searchPassWord(user);
+                                    if (getpassword.equals(password) && newpassword.equals(conpassword)) {
+                                        dbHandler.updatePassword(user, newpassword);
+                                    }
+                                }else {
+                                    Toast pass = Toast.makeText(Settingspref.this, "all fields must be filed out", Toast.LENGTH_LONG);
+                                    pass.show();
+                                }
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
 
-        dbHandler.setPrefmusic(x);
-        if(x==1){
-            Toast pass = Toast.makeText(this, "Inside turn on", Toast.LENGTH_LONG);
-            pass.show();
-            ring.start();
-            ring.setLooping(true);
-            dbHandler.setPrefmusic(x);
-        }else{
-            Toast pass = Toast.makeText(this, "inside turn off", Toast.LENGTH_LONG);
-            pass.show();
-            ring.release();
-            dbHandler.setPrefmusic(x);
-        }
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
+
    }
 
 }

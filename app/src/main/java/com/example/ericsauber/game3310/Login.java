@@ -16,7 +16,7 @@ public class Login extends AppCompatActivity {
    // music Music;
 
     //MyDBHandler helper = new MyDBHandler(this);
-
+String namestr;
 
     static int x = 0, b = 0;
 
@@ -60,12 +60,13 @@ public class Login extends AppCompatActivity {
 
 
     public void loginButtonClicked(View view){
-        String namestr = userInput.getText().toString();
+        namestr = userInput.getText().toString();
         String passwordstr = passwordInput.getText().toString();
         if(!namestr.equals("")) {
             String getpassword = dbHandler.searchPassWord(namestr);
 
             if (passwordstr.equals(getpassword)) {
+                dbHandler.setPrefname(namestr);
                 Intent i = new Intent(this, Main.class);
                 startActivity(i);
             } else {
