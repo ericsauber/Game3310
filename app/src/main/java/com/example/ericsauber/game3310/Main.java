@@ -18,6 +18,11 @@ public class Main extends AppCompatActivity {
 
     }
 
+    public void gotoSettingspref(View view){
+
+        Intent intent = new Intent(this, Settingspref.class);
+        startActivity(intent);
+    }
     public void gotoHighscoreTable(View view) {
 
         Intent intent = new Intent(this, HighscoreTable.class);
@@ -42,26 +47,23 @@ public class Main extends AppCompatActivity {
         Intent intent = new Intent(this, Tutorial1.class);
         startActivity(intent);
     }
+
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         dbHandler = new MyDBHandler(this, null, null, 1);
         Cursor recordSet = dbHandler.getCursorPref();
-        String name="";
-
-        if(recordSet.moveToFirst()) {
-            name = recordSet.getString(2);
-            if(!name.equals("")){
-                recordSet.close();
-                Intent intent = new Intent(this, Login.class);
-                startActivity(intent);
-            }
-
+        recordSet.moveToFirst();
+        String name = "";
+        name = recordSet.getString(2);
+        if (!name.equals("")) {
+            recordSet.close();
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+        } else{
+            recordSet.close();
+            Intent intent = new Intent(this, Main.class);
+            startActivity(intent);
         }
-
-        recordSet.close();
-        Intent intent = new Intent(this, Main.class);
-        startActivity(intent);
 
     }
 

@@ -13,11 +13,12 @@ public class Login extends AppCompatActivity {
 
     EditText userInput,passwordInput;
     MyDBHandler dbHandler;
+   // music Music;
 
     //MyDBHandler helper = new MyDBHandler(this);
 
 
-    static int x = 0;
+    static int x = 0, b = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +36,11 @@ public class Login extends AppCompatActivity {
         }
 
 
-        if (x == 0) {
-            MediaPlayer ring = MediaPlayer.create(Login.this,R.raw.mmsong);
+        if (x == 0 && b==0) {
+             MediaPlayer ring = MediaPlayer.create(this,R.raw.mmsong);
             ring.start();
             ring.setLooping(true);
+            b++;
         }
         if(!name.equals("")){
             Intent intent = new Intent(this, Main.class);
@@ -64,7 +66,6 @@ public class Login extends AppCompatActivity {
             String getpassword = dbHandler.searchPassWord(namestr);
 
             if (passwordstr.equals(getpassword)) {
-
                 Intent i = new Intent(this, Main.class);
                 startActivity(i);
             } else {
@@ -84,13 +85,11 @@ public class Login extends AppCompatActivity {
     }
 
     public void gotoMain(View view) {
-
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
 
     public void gotoRegistration(View view) {
-
         Intent intent = new Intent(this, Registration.class);
         startActivity(intent);
     }
