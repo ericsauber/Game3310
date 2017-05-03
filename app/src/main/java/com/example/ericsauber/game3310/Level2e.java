@@ -34,6 +34,7 @@ public class Level2e extends AppCompatActivity {
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
             startActivity(intent);
+            finish();
         }
        else if(word.equals(""))
         {
@@ -45,6 +46,7 @@ public class Level2e extends AppCompatActivity {
             intent.putExtra("lives", lives);
             intent.putExtra("level", level);
             startActivity(intent);
+            finish();
         }
     }
 }

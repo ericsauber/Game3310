@@ -25,5 +25,6 @@ public class Level3f extends AppCompatActivity {
         intent.putExtra("score", score);
         intent.putExtra("lives", lives);
         startActivity(intent);
+        finish();
     }
 }
