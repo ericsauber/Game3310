@@ -51,7 +51,7 @@ public class Level3b extends AppCompatActivity {
         num[2]= 5;
         num[3]= 6;
         num[4]= 7;
-        bonus = new CountDownTimer(20000, 1000) {
+        bonus = new CountDownTimer(21000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 time--;
@@ -61,7 +61,8 @@ public class Level3b extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                acc = (TextView) findViewById(R.id.textView17);
+                acc.setText(String.valueOf(time));
             }
         }.start();
     }

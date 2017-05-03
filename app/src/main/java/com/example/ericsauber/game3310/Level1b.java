@@ -8,7 +8,7 @@ import android.view.View;
 public class Level1b extends AppCompatActivity {
 
     int lives;
-
+    int score =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class Level1b extends AppCompatActivity {
 
         Intent intent = new Intent(this, Level1c.class);
         intent.putExtra("lives", lives);
+        intent.putExtra("score", score);
         startActivity(intent);
         finish();
     }

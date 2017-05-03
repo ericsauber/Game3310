@@ -29,7 +29,7 @@ public class Level2e extends AppCompatActivity {
         String word = typeText.getText().toString();
 
         if(word.equals("20")) {
-
+            score=score+10;
             Intent intent = new Intent(this, Level2f.class);
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);

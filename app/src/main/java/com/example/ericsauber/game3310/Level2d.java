@@ -45,8 +45,8 @@ public class Level2d extends AppCompatActivity {
         arr[2]= "12";
         arr[3]= "13";
         arr[4]= "14";
-    bonus = new CountDownTimer(10000,1000)
-        {
+    bonus = new CountDownTimer(11000,1000)
+    {
     public void onTick(long millisUntilFinished) {
         time--;
         acc = (TextView) findViewById(R.id.textView22);
@@ -55,7 +55,8 @@ public class Level2d extends AppCompatActivity {
 
     @Override
     public void onFinish() {
-
+        acc = (TextView) findViewById(R.id.textView22);
+        acc.setText("Out of Time.");
     }
 }.start();
     }

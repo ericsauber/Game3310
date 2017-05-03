@@ -25,6 +25,7 @@ public class Level1e extends AppCompatActivity {
         String word = typeText.getText().toString();
 
         if (word.equals("1")) {
+            score =score+10;
             Intent intent = new Intent(this, Level1f.class);
             intent.putExtra("score", score);
             intent.putExtra("lives", lives);
