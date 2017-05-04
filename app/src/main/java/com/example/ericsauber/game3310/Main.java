@@ -14,12 +14,9 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void gotoSettingspref(View view){
-
         Intent intent = new Intent(this, Settingspref.class);
         startActivity(intent);
     }
@@ -43,7 +40,6 @@ public class Main extends AppCompatActivity {
     }
 
     public void gotoTutorial1(View view) {
-
         Intent intent = new Intent(this, Tutorial1.class);
         startActivity(intent);
     }

@@ -39,8 +39,14 @@ public class Settingspref extends AppCompatActivity{
         t.setTypeface(font);
         ring = MediaPlayer.create(this,R.raw.mmsong);
         btn=(Button)findViewById(R.id.setting_logout);
-//        logout = (Button) findViewById(R.id.setting_music);
-//        logout.setVisibility(1);
+        logout = (Button) findViewById(R.id.setting_music);
+        logout.setVisibility(View.GONE);
+        Cursor cursor = dbHandler.getCursorPref();
+        cursor.moveToFirst();
+        user =  cursor.getString(2);
+        if(!user.equals("")) {
+            logout.setVisibility(View.VISIBLE);
+        }
 //        logout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -60,6 +66,7 @@ public class Settingspref extends AppCompatActivity{
     public void gotoMain(View view  ){
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);
+        finish();
     }
 
     public void changelogout(View view) {
@@ -78,7 +85,11 @@ public class Settingspref extends AppCompatActivity{
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            logout = (Button) findViewById(R.id.setting_music);
+                            logout.setVisibility(View.GONE);
                             dbHandler.logout(user);
+
+
                             dialog.cancel();
                         }
                     })
@@ -90,7 +101,7 @@ public class Settingspref extends AppCompatActivity{
                         }
                     });
             AlertDialog alert = altdial.create();
-            alert.setTitle("Dialog Header");
+            alert.setTitle("LOGOUT");
             alert.show();
         }
     }
@@ -133,12 +144,26 @@ public class Settingspref extends AppCompatActivity{
                                 conpassword= userInputconf.getText().toString();
                                 if(!password.equals("") && !newpassword.equals("") && !conpassword.equals("")) {
                                     String getpassword = dbHandler.searchPassWord(user);
-                                    if (getpassword.equals(password) && newpassword.equals(conpassword)) {
+                                    if (getpassword.equals(password)){
+                                      if(newpassword.equals(conpassword)) {
                                         dbHandler.updatePassword(user, newpassword);
+                                        Toast pass1 = Toast.makeText(getApplicationContext(), "Password has been changed!", Toast.LENGTH_LONG);
+                                        pass1.show();
+                                      }
+                                      else{
+                                          Toast pass1 = Toast.makeText(getApplicationContext(), "new password do not match", Toast.LENGTH_LONG);
+                                          pass1.show();
+                                      }
+                                    }
+                                    else{
+                                        Toast pass1 = Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_LONG);
+                                        pass1.show();
                                     }
                                 }else {
-                                    Toast pass = Toast.makeText(Settingspref.this, "all fields must be filed out", Toast.LENGTH_LONG);
+                                    //dialog.cancel();
+                                    Toast pass = Toast.makeText(getApplicationContext(), "all fields must be filed out", Toast.LENGTH_LONG);
                                     pass.show();
+
                                 }
                             }
                         })
@@ -151,7 +176,7 @@ public class Settingspref extends AppCompatActivity{
 
         // create alert dialog
         AlertDialog alertDialog = alertDialogBuilder.create();
-
+        alertDialog.setTitle("Change Password");
         // show it
         alertDialog.show();
 
