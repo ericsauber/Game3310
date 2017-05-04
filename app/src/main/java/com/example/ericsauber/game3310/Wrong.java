@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Wrong extends AppCompatActivity {
 
@@ -42,9 +43,21 @@ public class Wrong extends AppCompatActivity {
             if(count<=4) {
                 //insert
                 dbHandler.addHighScore(highscore);
+
             }else{
                 index = dbHandler.getindexMIN(score);
-                dbHandler.updateHighScore(highscore,index);
+
+                if(index >= 1){
+
+                   dbHandler.updateHighScore(highscore,index);
+                    Toast pass = Toast.makeText(Wrong.this, " Congraulations your score is on the top 5!", Toast.LENGTH_SHORT);
+                    pass.show();
+                    pass=Toast.makeText(Wrong.this, " score was" + score+  "", Toast.LENGTH_SHORT);
+                    pass.show();
+                }
+                else{
+
+               }
             }
 
             Intent intent = new Intent(this, GameOver.class);

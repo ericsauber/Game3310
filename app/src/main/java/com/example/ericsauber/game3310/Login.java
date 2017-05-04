@@ -24,6 +24,9 @@ String namestr;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
         dbHandler = new MyDBHandler(this, null, null, 1);
         Cursor recordSet = dbHandler.getCursorPref();
         String name="";

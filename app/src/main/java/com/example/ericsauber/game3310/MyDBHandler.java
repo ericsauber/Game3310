@@ -156,6 +156,8 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.insert(TABLE_HIGH, null, values);
         db.close();
     }
+//    SELECT hi_id, highscore WHERE highscore = (SELECT min(highscore) FROM high);
+//    Error: no such column: hi_id
 
     //RETURNS USERID from HIGHSCORE Table
     public String searchHighScore(int score){
@@ -177,27 +179,28 @@ public class MyDBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = getWritableDatabase();
         String query = "UPDATE " +TABLE_HIGH +
                 " SET " + COLUMN_NAME+
-                " =\"" + highcore.getHI_Name() + "\", " +COLUMN_HISCORE+ " = \" " +highcore.getHI_score()+ " WHERE " +
-                COLUMN_HIID + " = \"" + index +"\";";
+                " = \"" + highcore.getHI_Name() + "\", " +COLUMN_HISCORE+ " =  " +highcore.getHI_score()+ " WHERE " +
+                COLUMN_HIID + " = " + index +";";
         db.execSQL(query);
 
     }
 
     //returns -1 norows exist, 0 if it is not
     public int getindexMIN(int highscore){
-        int index = -1;
-        String query = "SELECT min(" +COLUMN_HISCORE + ") FROM "+TABLE_HIGH+ ";";
-        SQLiteDatabase db = getWritableDatabase();
+        int index = 0;
+        String query = "SELECT " +COLUMN_HIID+", " +COLUMN_HISCORE+ " FROM " +TABLE_HIGH+" WHERE " +
+                COLUMN_HISCORE +" = (SELECT min(" +COLUMN_HISCORE + ") FROM "+TABLE_HIGH+ ");";
+        SQLiteDatabase db = getReadableDatabase();
         Cursor recordSet = db.rawQuery(query, null);
         if(recordSet.moveToFirst()){
-            if(highscore >= recordSet.getInt(recordSet.getColumnIndex(COLUMN_HISCORE))){
-                index = recordSet.getInt(recordSet.getColumnIndex(COLUMN_HIID));
+            if(highscore >= recordSet.getInt(1)){
+                index = recordSet.getInt(0);
              }
         }
         recordSet.close();
         return index;
     }
-
+//    SELECT hi_id, highscore FROM high WHERE highscore = (SELECT min(highscore) FROM high
     //returns total COUNT of Highscore recorded
     public int getCountHighScore(){
         int count = 0;

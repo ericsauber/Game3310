@@ -47,21 +47,7 @@ public class Settingspref extends AppCompatActivity{
         if(!user.equals("")) {
             logout.setVisibility(View.VISIBLE);
         }
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //when play is clicked show stop button and hide play button
-//                Cursor cursor = dbHandler.getCursorPref();
-//                cursor.moveToFirst();
-//                user =  cursor.getString(2);
-//                if(user.equals("")) {
-//                    logout.setVisibility(View.GONE);
-//                }
-//                else{
-//                    logout.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
+
     }
     public void gotoMain(View view  ){
         Intent intent = new Intent(this, Main.class);
