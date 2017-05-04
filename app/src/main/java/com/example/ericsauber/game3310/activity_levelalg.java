@@ -24,7 +24,10 @@ public class activity_levelalg extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_levelalg);
+        Intent extras = getIntent();
+        score = extras.getIntExtra("score", 1);
         levelData = new GameData();  //create new gamedatainstance for current level
         startLevel();
     }
@@ -307,9 +310,9 @@ public class activity_levelalg extends AppCompatActivity {
                 incDialog.dismiss();
                 Intent intent = new Intent(incDialog.getContext(), Main.class);
                 startActivity(intent);
+                finish();
             }
         });
-
         wrong_diag.show();
     }
 
@@ -379,6 +382,7 @@ public class activity_levelalg extends AppCompatActivity {
                 Intent intent = new Intent(incDialog.getContext(), GameOver.class);
                 intent.putExtra("score", score);
                 startActivity(intent);
+                finish();
             }
         });
         incDialog.dismiss();
@@ -389,6 +393,7 @@ public class activity_levelalg extends AppCompatActivity {
     public void gotoMain(View view) {
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);
+        finish();
     }
 
 
