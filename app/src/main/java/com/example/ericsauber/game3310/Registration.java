@@ -30,21 +30,6 @@ public class Registration extends AppCompatActivity {
         //printDatabase();
     }
 
-    //Print the database
-//    public void printDatabase(){
-//        String dbString = dbHandler.databaseToString();
-//        String created = "Welcome ";
-//        dbString = created +dbString;
-//        recordsTextView.setText(dbString);
-//        userInput.setText("");
-//        passwordInput.setText("");
-//        password2Input.setText("");
-//        Toast pass = Toast.makeText(Registration.this,"Username created!", Toast.LENGTH_SHORT);
-//        pass.show();
-//
-//
-//    }
-
     //add your elements onclick methods.
     //Add a product to the database
     public void addButtonClicked(View view){
@@ -93,6 +78,7 @@ public class Registration extends AppCompatActivity {
 
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);
+        finish();
     }
 
 //    public void deleteButtonClicked(View view){
